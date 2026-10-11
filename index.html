@@ -14,7 +14,7 @@
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-mJMdXrVgSzEtaV7o/7W7+t7Qe4IHPZ6EBu6KYc95VpI='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5CsBJcNOa3Bbn56K1Hr6K16edr4Q1wVED3bT59Tnsrw='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.">
 <meta name="theme-color" content="#0d0a08">
@@ -4736,7 +4736,7 @@ function buildShell() {
     });
     tabBtns[k] = b; nav.appendChild(b);
   });
-  wrap.appendChild(nav);
+  wrap.appendChild(el('nav', { class: 'tabsnav', 'aria-label': t('tabs.aria') }, [nav]));
   const main = el('main', { id: 'main', tabindex: '-1' });
   const build = { play: () => (playRoot ? playRoot : buildPlay()), atlas: buildAtlas, learn: buildLearn, problems: buildProblems, sgf: buildSGF, about: buildAbout };
   TABS.forEach(k => {
@@ -4771,7 +4771,7 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 
 </script>
 <!-- tf-donate: sprijin voluntar (Patreon + Buy Me a Coffee) — self-contained, fără resurse externe, fără JS -->
-<div id="tf-donate" aria-label="Sprijină autorul">
+<div id="tf-donate" role="complementary" aria-label="Sprijină autorul">
 <style>
 #tf-donate{position:fixed;right:14px;bottom:14px;z-index:2147483600;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1}
 #tf-donate *{box-sizing:border-box}
@@ -4800,8 +4800,5 @@ if (document.readyState === 'loading') document.addEventListener('DOMContentLoad
 </div>
 <label for="tf-donate-cb" class="tf-open" title="Sprijină" aria-label="Sprijină">♥</label>
 </div>
-</body>
-</html>
-
 </body>
 </html>

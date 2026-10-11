@@ -4,6 +4,8 @@ Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×1
 
 **Live:** https://chiuta.github.io/Go-fara-frontiere/
 
+**Ultima actualizare:** 11 octombrie 2026
+
 ![Captura de ecran](screenshot.png)
 
 ## Ce este
@@ -110,6 +112,13 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 ## Rulare locală
 
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
+
+## Istoric / Changelog
+
+### 11 octombrie 2026
+- Accesibilitate: bara de file este încadrată într-un reper `<nav>`, widgetul de sprijin are rol de reper; axe-core raportează 0 încălcări la 1280 și 360 px.
+- Reparat HTML-ul: eliminat un `</body></html>` duplicat de la sfârșitul fișierului; hash-ul CSP al scriptului a fost recalculat (verificat cu CSP activ, fără bypass).
+- Nemodificat intenționat: mențiunea „licență nedeclarată (decizia autorului)” din aplicație, deși în depozit există un fișier `LICENSE`; decizia de declarare aparține autorului.
 
 ## Licență
 
