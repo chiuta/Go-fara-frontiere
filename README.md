@@ -117,6 +117,9 @@ Descărcați `index.html` și deschideți-l în browser; funcționează fără i
 
 ## Istoric / Changelog
 
+### 11 octombrie 2026 (a treia trecere)
+- Nota despre komi la handicap (RO/EN): AGA „h−0,5” și „0,5 + (h−1)” sunt aceeași valoare, acum formulat ca atare (înainte părea că sunt două formule). CSP: hash recalculat.
+
 ### 11 octombrie 2026 (a doua trecere)
 - Salvare automată a partidei în curs cu „Continuă partida” (validare strictă + reluare, text nou în toate cele 7 limbi); buton „Sugestie” care propune o mutare cu motorul MCTS local; CSP: hash recalculat.
 

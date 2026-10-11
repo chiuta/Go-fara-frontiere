@@ -14,7 +14,7 @@
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-AuH14MCd7M9VLwQSc7a/8aIbfHUp4eBD6RcT54OroHg='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vJ6oVDWCO1VHBXVUv3T4r7Nr8rrlGJCFQX2AIUQ+avk='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.">
 <meta name="theme-color" content="#0d0a08">
@@ -3169,7 +3169,7 @@ const UI = {
 };
 
 /* ===== DATE: atlas de variante, nivele AI, preseturi, lecții. Texte lungi: RO + EN. ===== */
-const KOMI_NOTE = { ro: 'Komi implicit: japoneză 6,5 · chineză 7,5 · AGA 7,5 · Tromp–Taylor 7,5. Cu handicap h: japoneză/TT/personalizat 0,5 · AGA h−0,5 (0,5 + (h−1) pentru scorul pe arie) · chineză h (editabil).', en: 'Default komi: Japanese 6.5 · Chinese 7.5 · AGA 7.5 · Tromp–Taylor 7.5. With h handicap stones: Japanese/TT/custom 0.5 · AGA h−0.5 (0.5 + (h−1) for area scoring) · Chinese h (editable).' };
+const KOMI_NOTE = { ro: 'Komi implicit: japoneză 6,5 · chineză 7,5 · AGA 7,5 · Tromp–Taylor 7,5. Cu handicap h: japoneză/TT/personalizat 0,5 · AGA h−0,5 (adică 0,5 + (h−1), aceeași valoare) · chineză h (editabil).', en: 'Default komi: Japanese 6.5 · Chinese 7.5 · AGA 7.5 · Tromp–Taylor 7.5. With h handicap stones: Japanese/TT/custom 0.5 · AGA h−0.5 (i.e. 0.5 + (h−1), the same value) · Chinese h (editable).' };
 
 /* Preseturi pentru „▶ Joacă” din atlas */
 const PRESETS = {
