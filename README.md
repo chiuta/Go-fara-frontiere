@@ -22,6 +22,8 @@ Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv 
 - **Moduri:** contra AI (alegi culoarea sau aleator), doi jucători pe același ecran, Rengo 2 contra 2 (partenerul și adversarii pot fi AI), Phantom Go ⚠ contra AI.
 - **AI:** MCTS (UCT + RAVE) cu simulări ușoare (capturi/scăpări din atari, tipare 3×3, nu umple ochi proprii, evită self-atari), 5 niveluri cu iterații și timp configurabile, butonul „Oprește / gândește mai puțin”, rulează într-un Web Worker (din Blob) și, dacă nu e permis, pe firul principal în felii de ~20 ms.
 - **Variante de atlas jucabile:** Atari-Go (Capture Go / Ponnuki-Go: prima captură; opțional țintă 5 sau 10 pietre), Go pe tablă mică (5×5, 7×7), NoGo, Rengo, Phantom Go ⚠, Byo-yomi cu ceas funcțional (timp de bază + perioade).
+- **Sugestie** (💡, în partidele cu pietre vizibile): AI-ul local propune o mutare pentru tine (căutare Monte-Carlo, orientativă), afișată ca mutare de confirmat sau anulat.
+- **Salvare automată:** o partidă nefinalizată se salvează local după fiecare mutare; la următoarea deschidere, fila „Joacă” oferă „Continuă partida” sau „Șterge salvarea” (verificată prin reluare; salvările corupte sunt respinse).
 - **Lecții interactive** (6): pietre, libertăți, captură, ko, doi ochi, seki.
 - **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
 - **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
@@ -93,7 +95,7 @@ Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului)
 
 ## Confidențialitate și rețea
 
-Fără rețea, cont sau telemetrie; CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate și statistici locale. Linkurile Patreon/Coffee din subsol se deschid doar la clic (`rel=noopener`).
+Fără rețea, cont sau telemetrie; CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`gff.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Patreon/Coffee din subsol se deschid doar la clic (`rel=noopener`).
 
 ## Limite și avertismente
 
@@ -114,6 +116,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
 
 ## Istoric / Changelog
+
+### 11 octombrie 2026 (a doua trecere)
+- Salvare automată a partidei în curs cu „Continuă partida” (validare strictă + reluare, text nou în toate cele 7 limbi); buton „Sugestie” care propune o mutare cu motorul MCTS local; CSP: hash recalculat.
 
 ### 11 octombrie 2026
 - Accesibilitate: bara de file este încadrată într-un reper `<nav>`, widgetul de sprijin are rol de reper; axe-core raportează 0 încălcări la 1280 și 360 px.

@@ -14,7 +14,7 @@
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5CsBJcNOa3Bbn56K1Hr6K16edr4Q1wVED3bT59Tnsrw='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-AuH14MCd7M9VLwQSc7a/8aIbfHUp4eBD6RcT54OroHg='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.">
 <meta name="theme-color" content="#0d0a08">
@@ -1478,6 +1478,12 @@ const UI = {
     "log.move": "{c} joacă la {p}.",
     "log.pass": "{c} dă pas.",
     "msg.started": "Partida a început.",
+    "btn.hint": "Sugestie",
+    "hint.at": "Sugestie (căutare Monte-Carlo locală, orientativă): {p}. Confirmă sau anulează.",
+    "hint.pass": "Sugestie: AI-ul ar da pas.",
+    "save.found": "Ai o partidă nesfârșită salvată pe acest dispozitiv: {n}×{n}, {m} mutări.",
+    "save.continue": "Continuă partida",
+    "save.discard": "Șterge salvarea",
     "msg.resumed": "Jocul continuă.",
     "msg.undone": "Mutare anulată.",
     "msg.exported": "SGF exportat.",
@@ -1735,6 +1741,12 @@ const UI = {
     "log.move": "{c} plays at {p}.",
     "log.pass": "{c} passes.",
     "msg.started": "The game has started.",
+    "btn.hint": "Hint",
+    "hint.at": "Hint (local Monte-Carlo search, indicative): {p}. Confirm or cancel.",
+    "hint.pass": "Hint: the AI would pass.",
+    "save.found": "You have an unfinished game saved on this device: {n}×{n}, {m} moves.",
+    "save.continue": "Continue game",
+    "save.discard": "Delete saved game",
     "msg.resumed": "Play continues.",
     "msg.undone": "Move undone.",
     "msg.exported": "SGF exported.",
@@ -1992,6 +2004,12 @@ const UI = {
     "log.move": "{c} joue en {p}.",
     "log.pass": "{c} passe.",
     "msg.started": "La partie a commencé.",
+    "btn.hint": "Indice",
+    "hint.at": "Indice (recherche Monte-Carlo locale, indicative) : {p}. Confirmez ou annulez.",
+    "hint.pass": "Indice : l'IA passerait.",
+    "save.found": "Une partie inachevée est enregistrée sur cet appareil : {n}×{n}, {m} coups.",
+    "save.continue": "Continuer la partie",
+    "save.discard": "Supprimer la sauvegarde",
     "msg.resumed": "La partie continue.",
     "msg.undone": "Coup annulé.",
     "msg.exported": "SGF exporté.",
@@ -2249,6 +2267,12 @@ const UI = {
     "log.move": "{c} gioca in {p}.",
     "log.pass": "{c} passa.",
     "msg.started": "La partita è iniziata.",
+    "btn.hint": "Suggerimento",
+    "hint.at": "Suggerimento (ricerca Monte Carlo locale, indicativo): {p}. Conferma o annulla.",
+    "hint.pass": "Suggerimento: l'IA passerebbe.",
+    "save.found": "C'è una partita non finita salvata su questo dispositivo: {n}×{n}, {m} mosse.",
+    "save.continue": "Continua la partita",
+    "save.discard": "Elimina il salvataggio",
     "msg.resumed": "Il gioco continua.",
     "msg.undone": "Mossa annullata.",
     "msg.exported": "SGF esportato.",
@@ -2506,6 +2530,12 @@ const UI = {
     "log.move": "{c} juega en {p}.",
     "log.pass": "{c} pasa.",
     "msg.started": "La partida ha comenzado.",
+    "btn.hint": "Pista",
+    "hint.at": "Pista (búsqueda Monte Carlo local, orientativa): {p}. Confirma o cancela.",
+    "hint.pass": "Pista: la IA pasaría.",
+    "save.found": "Hay una partida sin terminar guardada en este dispositivo: {n}×{n}, {m} jugadas.",
+    "save.continue": "Continuar la partida",
+    "save.discard": "Borrar el guardado",
     "msg.resumed": "El juego continúa.",
     "msg.undone": "Jugada deshecha.",
     "msg.exported": "SGF exportado.",
@@ -2763,6 +2793,12 @@ const UI = {
     "log.move": "{c} joga em {p}.",
     "log.pass": "{c} passa.",
     "msg.started": "A partida começou.",
+    "btn.hint": "Dica",
+    "hint.at": "Dica (pesquisa Monte Carlo local, indicativa): {p}. Confirme ou cancele.",
+    "hint.pass": "Dica: a IA passaria.",
+    "save.found": "Há uma partida inacabada guardada neste dispositivo: {n}×{n}, {m} jogadas.",
+    "save.continue": "Continuar a partida",
+    "save.discard": "Apagar o guardado",
     "msg.resumed": "O jogo continua.",
     "msg.undone": "Jogada desfeita.",
     "msg.exported": "SGF exportado.",
@@ -3020,6 +3056,12 @@ const UI = {
     "log.move": "{c} spielt auf {p}.",
     "log.pass": "{c} passt.",
     "msg.started": "Die Partie hat begonnen.",
+    "btn.hint": "Tipp",
+    "hint.at": "Tipp (lokale Monte-Carlo-Suche, unverbindlich): {p}. Bestätigen oder abbrechen.",
+    "hint.pass": "Tipp: Die KI würde passen.",
+    "save.found": "Auf diesem Gerät ist eine unvollendete Partie gespeichert: {n}×{n}, {m} Züge.",
+    "save.continue": "Partie fortsetzen",
+    "save.discard": "Speicherstand löschen",
     "msg.resumed": "Das Spiel geht weiter.",
     "msg.undone": "Zug zurückgenommen.",
     "msg.exported": "SGF exportiert.",
@@ -3742,15 +3784,56 @@ function buildRulesFor(s) {
 }
 function crossSetup(n) { const a = ((n - 1) >> 1) - 1, b = a + 1, P = (x, y) => y * n + x; return [[P(a, a), 2], [P(b, a), 1], [P(a, b), 1], [P(b, b), 2]]; }
 
-function startGame() {
-  const s = setup; saveSetup();
+/* ---------- salvare automată a partidei în curs (localStorage, doar în try/catch; o singură partidă) ---------- */
+const SAVE_KEY = 'gff.save.v1';
+function autosave() {
+  try {
+    if (!G || G.mode === 'phantom' || G.clock) return;
+    if (G.phase === 'over') { localStorage.removeItem(SAVE_KEY); return; }
+    if (!G.st.moves.length) return;
+    localStorage.setItem(SAVE_KEY, JSON.stringify({ v: 1, cfg: G.cfg, humanColor: G.humanColor, seedBase: G.seedBase === undefined ? null : G.seedBase, startedAt: G.startedAt.toISOString(), moves: G.st.moves.map(m => m[0]) }));
+  } catch (e) { /* aplicația merge și fără stocare */ }
+}
+function discardSave() { try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignorat */ } }
+/* citește și validează strict salvarea (date corupte/malițioase → null) */
+function readSave() {
+  try {
+    const o = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+    if (!o || o.v !== 1 || !o.cfg || typeof o.cfg !== 'object' || !Array.isArray(o.moves) || o.moves.length > 3000) return null;
+    const cfg = sanitizeSetup(Object.assign({}, SETUP_DEFAULT, o.cfg));
+    cfg.clock = false;
+    if (cfg.mode === 'phantom') return null;
+    const n = cfg.n; let mv = o.moves.slice();
+    if (!mv.every(p => Number.isInteger(p) && p >= -1 && p < n * n)) return null;
+    while (mv.length && mv[mv.length - 1] === -1) mv.pop();
+    if (!mv.length) return null;
+    if (o.humanColor !== 1 && o.humanColor !== 2) return null;
+    const seedBase = (typeof o.seedBase === 'number' && isFinite(o.seedBase)) ? (o.seedBase | 0) : null;
+    let started = new Date(String(o.startedAt)); if (isNaN(started.getTime())) started = new Date();
+    return { cfg, humanColor: o.humanColor, seedBase, startedAt: started, moves: mv };
+  } catch (e) { return null; }
+}
+function continueSaved() {
+  const r = readSave();
+  if (!r) { discardSave(); renderPlay(); return; }
+  /* verificare prin reluare: dacă o mutare e ilegală, salvarea e respinsă */
+  const stones = (r.cfg.variant === 'go' && r.cfg.handicap >= 2 && Core.handicapPoints(r.cfg.n, r.cfg.handicap)) ? Core.handicapPoints(r.cfg.n, r.cfg.handicap).map(p => [p, 1]) : (r.cfg.variant === 'capture' && r.cfg.cross && r.cfg.n >= 5 ? crossSetup(r.cfg.n) : []);
+  const chk = Core.replay({ n: r.cfg.n, rules: buildRulesFor(r.cfg), setup: stones, toMove: stones.length && r.cfg.variant === 'go' ? 2 : 1, captureTarget: r.cfg.variant === 'capture' ? r.cfg.captureTarget : 0, noGo: r.cfg.variant === 'nogo' }, r.moves);
+  if (chk.error) { discardSave(); renderPlay(); return; }
+  startGame(r);
+}
+
+function startGame(restore) {
+  if (restore && !restore.cfg) restore = null; /* apel din handler de eveniment */
+  const s = restore ? restore.cfg : setup; if (!restore) saveSetup();
   const n = s.n, rules = buildRulesFor(s);
   let stones = [], first = 1;
   if (s.variant === 'go' && s.handicap >= 2 && Core.handicapPoints(n, s.handicap)) { stones = Core.handicapPoints(n, s.handicap).map(p => [p, 1]); first = 2; }
   if (s.variant === 'capture' && s.cross && n >= 5) stones = crossSetup(n);
   const seedTxt = String(s.seed || '').trim(); let seedBase = null;
   if (seedTxt) { if (/^-?\d{1,15}$/.test(seedTxt)) seedBase = parseInt(seedTxt, 10) | 0; else { let h = 2166136261; for (let i = 0; i < seedTxt.length; i++) { h ^= seedTxt.charCodeAt(i); h = Math.imul(h, 16777619); } seedBase = h | 0; } }
-  const humanColor = s.color === 'random' ? (seedBase !== null ? (Core.mulberry32(seedBase)() < 0.5 ? 1 : 2) : (Core.secureInt(2) + 1)) : (s.color === 'white' ? 2 : 1);
+  if (restore) seedBase = restore.seedBase;
+  const humanColor = restore ? restore.humanColor : s.color === 'random' ? (seedBase !== null ? (Core.mulberry32(seedBase)() < 0.5 ? 1 : 2) : (Core.secureInt(2) + 1)) : (s.color === 'white' ? 2 : 1);
   const L = AI.LEVELS[Math.max(0, Math.min(4, s.level - 1))];
   const itn = s.iters === '' ? L.iters : Math.max(0, parseInt(s.iters, 10) || 0);
   const msn = s.ms === '' ? L.ms : Math.max(200, (parseFloat(s.ms) || 1) * 1000);
@@ -3762,8 +3845,9 @@ function startGame() {
   };
   if (s.clock) { G.clock = Core.clockNew({ main: Math.max(0, s.main) * 60000, periods: Math.max(0, s.periods | 0), period: Math.max(1, s.period) * 1000 }); startTicker(); }
   if (G.mode === 'phantom') G.rules.marking = false;
+  if (restore) { G.startedAt = restore.startedAt; rebuild(restore.moves.map(p => [p])); G.msg = t('msg.resumed'); }
   renderPlay(); getBrain();
-  announce(t('msg.started'));
+  announce(t(restore ? 'msg.resumed' : 'msg.started'));
   setTimeout(() => { maybeAI(); focusBoardSoon(); }, 60);
 }
 function focusBoardSoon() { try { if (boardUI && !COARSE) boardUI.focus(); } catch (e) { /* ignorat */ } }
@@ -3828,6 +3912,11 @@ function checkbox(label, checked, onChange) {
 function buildSetup() {
   const s = setup, box = el('div', { class: 'card setup' });
   box.appendChild(el('h2', { text: t('setup.title') }));
+  const sv0 = readSave();
+  if (sv0) box.appendChild(el('div', { class: 'pendingbar', role: 'region', 'aria-label': t('save.found', { n: sv0.cfg.n, m: sv0.moves.length }) }, [
+    el('span', { text: t('save.found', { n: sv0.cfg.n, m: sv0.moves.length }) }),
+    el('button', { class: 'btn pri', onclick: continueSaved, text: t('save.continue') }),
+    el('button', { class: 'btn', onclick: () => { discardSave(); renderPlay(); }, text: t('save.discard') })]));
   const rerender = () => { renderPlay(); };
   const row1 = el('div', { class: 'grid2' });
   row1.appendChild(field(t('setup.variant'), selectOf([['go', t('v.go')], ['capture', t('v.capture')], ['nogo', t('v.nogo')]], s.variant, v => {
@@ -3914,7 +4003,7 @@ function buildSetup() {
   if (s.variant === 'go' && s.ruleId === 'japanese' && s.mode !== 'phantom') warn.push(t('warn.japanese'));
   if (s.mode === 'phantom') warn.push(t('warn.phantom'));
   warn.forEach(w => box.appendChild(el('p', { class: 'warnline', text: '⚠ ' + w })));
-  box.appendChild(el('div', { class: 'actions' }, [el('button', { class: 'btn pri big', id: 'startbtn', onclick: startGame, text: '▶ ' + t('btn.start') })]));
+  box.appendChild(el('div', { class: 'actions' }, [el('button', { class: 'btn pri big', id: 'startbtn', onclick: () => { startGame(); }, text: '▶ ' + t('btn.start') })]));
   return box;
 }
 
@@ -3994,6 +4083,7 @@ function applyZoom() { if (!boardUI) return; boardUI.wrap.style.width = (G.zoom 
 
 function refreshGame() {
   if (!G || !boardUI) return;
+  autosave();
   boardUI.render(viewFor());
   const side = refs.side; if (!side) return; clear(side);
   /* jucători */
@@ -4034,6 +4124,7 @@ function buildControls() {
   c.appendChild(row);
   const row2 = el('div', { class: 'btnrow' });
   if (G.variant === 'go' && G.mode !== 'phantom') row2.appendChild(el('button', { class: 'btn', disabled: G.busy, onclick: doEstimate, text: G.est ? t('btn.hideEst') : t('btn.estimate') }));
+  if (G.mode !== 'phantom') row2.appendChild(el('button', { class: 'btn', disabled: !my, onclick: requestHint, text: '💡 ' + t('btn.hint') }));
   row2.appendChild(el('button', { class: 'btn', onclick: exportSGF, text: t('btn.sgfExport') }));
   c.appendChild(row2);
   if (G.confirmBar) {
@@ -4235,6 +4326,20 @@ function applyAIOut(out) {
   const L = Core.legalMoves(st);
   if (L.length) { Core.play(st, L[(Math.random() * L.length) | 0]); return moved(c); }
   Core.pass(st); moved(c);
+}
+async function requestHint() {
+  if (!G || G.phase !== 'play' || G.busy || !humanTurn() || G.mode === 'phantom') return;
+  const token = ++G.token; G.busy = true; G.progress = null; G.pending = -1; G.msg = ''; refreshGame();
+  const job = Object.assign(jobBase(), { iters: G.iters, maxMs: Math.min(aiBudget(), 4000), allowResign: false });
+  let out = null;
+  try { out = await getBrain().think(job, o => { if (token === G.token) { G.progress = o; const e = $('#thinktxt'); if (e) e.textContent = t('think.progress', { it: o.iters || 0, wr: Math.round((o.wr || 0.5) * 100) }); } }); }
+  catch (e) { out = { move: -9 }; }
+  if (!G || token !== G.token) return;
+  G.busy = false; G.progress = null;
+  if (out && out.move >= 0 && Core.canPlay(G.st, out.move)) { G.pending = out.move; G.msg = t('hint.at', { p: Core.coordName(out.move, G.n) }); }
+  else if (out && out.move === -1) G.msg = t('hint.pass');
+  else G.msg = t('err.est');
+  refreshGame(); announce(G.msg);
 }
 async function doEstimate() {
   if (G.est) { G.est = null; refreshGame(); return; }
