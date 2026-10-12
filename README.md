@@ -1,10 +1,10 @@
 # Go fără frontiere
 
+**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
+
 Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×19, patru seturi de reguli, adversar AI (MCTS), 12 variante jucabile, lecții, probleme de tsume verificate de un solver și SGF.
 
 **Live:** https://chiuta.github.io/Go-fara-frontiere/
-
-**Ultima actualizare:** 11 octombrie 2026
 
 ![Captura de ecran](screenshot.png)
 
@@ -116,6 +116,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
 
 ## Istoric / Changelog
+
+### 12 octombrie 2026 — versiunea 1.0.0
+- 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație
 
 ### 11 octombrie 2026 (a treia trecere)
 - Nota despre komi la handicap (RO/EN): AGA „h−0,5” și „0,5 + (h−1)” sunt aceeași valoare, acum formulat ca atare (înainte părea că sunt două formule). CSP: hash recalculat.

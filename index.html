@@ -14,7 +14,9 @@
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-vJ6oVDWCO1VHBXVUv3T4r7Nr8rrlGJCFQX2AIUQ+avk='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-h9AfD1SuHZPbCncBb6HxOVUmfb7cX2zmJQ/tZLTKGPc='; worker-src blob:; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="application-version" content="1.0.0">
+<meta name="last-updated" content="2026-10-12">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.">
 <meta name="theme-color" content="#0d0a08">
@@ -1340,6 +1342,7 @@ const UI = {
     "tab.about": "Despre",
     "note.en": "Text în engleză (traducerea completă există doar în română și engleză).",
     "foot": "Go fără frontiere · aplicație offline, fără telemetrie · licență nedeclarată (decizia autorului)",
+    "version": "Versiune",
     "black": "Negru",
     "white": "Alb",
     "empty": "gol",
@@ -1603,6 +1606,7 @@ const UI = {
     "tab.about": "About",
     "note.en": "English text (full translations exist only in Romanian and English).",
     "foot": "Go without borders · offline app, no telemetry · licence undeclared (the author's decision)",
+    "version": "Version",
     "black": "Black",
     "white": "White",
     "empty": "empty",
@@ -1866,6 +1870,7 @@ const UI = {
     "tab.about": "À propos",
     "note.en": "Texte en anglais (la traduction complète n'existe qu'en roumain et en anglais).",
     "foot": "Go sans frontières · application hors ligne, sans télémétrie · licence non déclarée (décision de l'auteur)",
+    "version": "Version",
     "black": "Noir",
     "white": "Blanc",
     "empty": "vide",
@@ -2129,6 +2134,7 @@ const UI = {
     "tab.about": "Informazioni",
     "note.en": "Testo in inglese (la traduzione completa esiste solo in rumeno e inglese).",
     "foot": "Go senza frontiere · app offline, senza telemetria · licenza non dichiarata (decisione dell'autore)",
+    "version": "Versione",
     "black": "Nero",
     "white": "Bianco",
     "empty": "vuoto",
@@ -2392,6 +2398,7 @@ const UI = {
     "tab.about": "Acerca de",
     "note.en": "Texto en inglés (la traducción completa solo existe en rumano e inglés).",
     "foot": "Go sin fronteras · aplicación sin conexión, sin telemetría · licencia sin declarar (decisión del autor)",
+    "version": "Versión",
     "black": "Negro",
     "white": "Blanco",
     "empty": "vacío",
@@ -2655,6 +2662,7 @@ const UI = {
     "tab.about": "Sobre",
     "note.en": "Texto em inglês (a tradução completa só existe em romeno e inglês).",
     "foot": "Go sem fronteiras · aplicação offline, sem telemetria · licença não declarada (decisão do autor)",
+    "version": "Versão",
     "black": "Preto",
     "white": "Branco",
     "empty": "vazio",
@@ -2918,6 +2926,7 @@ const UI = {
     "tab.about": "Info",
     "note.en": "Englischer Text (die vollständige Übersetzung gibt es nur auf Rumänisch und Englisch).",
     "foot": "Go ohne Grenzen · Offline-App, keine Telemetrie · Lizenz nicht erklärt (Entscheidung des Autors)",
+    "version": "Version",
     "black": "Schwarz",
     "white": "Weiß",
     "empty": "leer",
@@ -4849,7 +4858,7 @@ function buildShell() {
     pn.appendChild(build[k]()); panels[k] = pn; main.appendChild(pn);
   });
   wrap.appendChild(main);
-  wrap.appendChild(el('footer', { class: 'foot' }, [el('small', { text: t('foot') })]));
+  wrap.appendChild(el('footer', { class: 'foot' }, [el('small', { text: t('foot') }), el('br'), el('small', { id: 'app-version', text: t('version') + ' v 1.0.0 · 2026-10-12' })]));
   liveEl = el('div', { id: 'live', class: 'sr', role: 'status', 'aria-live': 'polite' });
   wrap.appendChild(liveEl);
   app.appendChild(wrap);
