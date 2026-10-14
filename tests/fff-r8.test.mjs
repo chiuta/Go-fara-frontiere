@@ -233,6 +233,7 @@ console.log("8. joc în doi prin FFF.p2p (două pagini, lockstep, marcare sincro
   await B.page.waitForFunction(() => window.__go8.G().st.moves.length === 1, null, {timeout: 8000});
   await act(B.page, ["Home", "ArrowRight", "Enter"]);
   await A.page.waitForFunction(() => window.__go8.G().st.moves.length === 2, null, {timeout: 8000});
+  await B.page.waitForFunction(() => window.__go8.G().st.moves.length === 2, null, {timeout: 8000});
   const bA = await A.page.evaluate(() => Array.prototype.join.call(window.__go8.G().st.board, "")), bB = await B.page.evaluate(() => Array.prototype.join.call(window.__go8.G().st.board, ""));
   check("tablele sunt identice pe ambele părți", bA === bB);
   check("fără resincronizări inutile", (await B.page.evaluate(() => window.__go8.G().online.ctrl.lockstep.stats.resyncs)) === 0);
