@@ -1,6 +1,6 @@
 # Go fără frontiere
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
+**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
 
 Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×19, patru seturi de reguli, adversar AI (MCTS), 12 variante jucabile, lecții, probleme de tsume verificate de un solver și SGF.
 
@@ -28,9 +28,21 @@ Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv 
 - **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
 - **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
 - **Interfață:** tastatură completă (săgeți + Enter, P = pas, U = anulează), mod „confirmă mutarea” (implicit pe ecran tactil), zoom 1×/1,6×/2,2× pe mobil, 390 px fără scroll orizontal; anulare doar contra AI sau cu confirmare; fără sunete.
-- **Interfață în 7 limbi** (RO/EN/FR/IT/ES/PT/DE) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
+- **Interfață în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi; maghiara acoperă doar textele noi și elementele de bază, restul cade pe engleză) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
 - **Aleatoriu:** `crypto.getRandomValues` cu rejection sampling (culoarea aleatoare, seed-urile AI); opțiune „Seed” pentru partide reproductibile.
 - **Accesibilitate:** aria-live, focus vizibil, ținte tactile ≥ 44 px (măsurat), contrast ≥ 4,5:1 (măsurat), `prefers-reduced-motion`, `<noscript>`, `lang` dinamic.
+
+## Funcții noi (1.1.0)
+
+Toate se deschid din butonul „Masa de joc” (jocuri în doi, analiză, provocarea zilei, turneu, accesibilitate). Nu există server și nu se adaugă cereri de rețea în afara celor de mai jos.
+
+- **Joc în doi prin FFF.p2p** (WebRTC, semnalizare manuală prin text sau cod QR, fără server). Gazda este autoritară; oaspetele aplică doar mutările numerotate returnate de gazdă (lockstep, cu sumă de control a poziției). Mutare, pas, abandon, marcarea pietrelor moarte și confirmarea scorului sunt sincronizate; remiză/partidă nouă se propun și se acceptă. Limite: fără ceas, fără AI, fără anulare mutare în partida online, fără reluare după reîncărcarea paginii. Adresa IP este vizibilă adversarului; NAT simetric poate necesita STUN/TURN (STUN public opțional, doar cu acordul explicit din dialog).
+- **Analizor local**: estimare de probabilitate de câștig și de scor cu MCTS cu sămânță fixă (800/500/250 de iterații după mărimea tablei), deci același rezultat pentru aceeași poziție; „Recenzie” a partidei curente cu grafic și mutările care schimbă evaluarea cu ≥ 20 de puncte. Este o estimare statistică, nu un motor de nivel profesionist.
+- **Provocarea zilei**: tablă 9×9 cu pietre plasate din data calendaristică (aceeași pentru toți în aceeași zi), plus problema de tsume a zilei din cele 12 existente; serie de zile consecutive stocată local. Fără rețea.
+- **„De ce nu pot muta?”**: orice mutare ilegală primește o explicație (punct ocupat, ko cu mutarea de interdicție, superko cu numărul mutării, sinucidere cu mărimea lanțului, NoGo etc.), anunțată și pentru cititoare de ecran; buton dedicat și tasta `?`.
+- **Tastatură și anunțuri audio**: cursor pe tablă cu săgeți, Enter/Spațiu pentru a juca, `W` (stare), `C` (coordonate), `L` (ultima mutare), `S` (scor); regiune aria-live și, opțional, voce (Web Speech, local) prin modulul `tts` al kitului.
+- **Turneu Elo local**: dumneavoastră + adversari AI (Elo 500 + 200·nivel), tur-retur, clasament recalculat din rezultate; meciurile între AI se simulează pe 5×5/7×7/9×9 cu iterații reduse (Tromp–Taylor); clasamentul Elo este relativ și orientativ.
+- **Kit FFF** aplicat: `core, label, bundle, qr, p2p, tts` (fereastra de transparență, `app.json`). CSP-ul rămâne `default-src 'none'`; s-au recalculat doar hash-urile scripturilor.
 
 ## Variante
 
@@ -81,7 +93,11 @@ Cu 20–40 de jocuri, intervalul de încredere (95%) este de ordinul ±15–20 p
 
 Rangul NU este măsurat (nu există motor cotat sau jucători umani de referință în mediul de construcție); orice echivalent în kyu ar fi speculație, deci nu se afirmă unul. Nivelurile 1–2 sunt pentru începători absoluți. Pe 19×19 este mult mai slab și mai lent. AI-ul nu trișează: primește doar tabla, istoricul mutărilor și regulile; în Phantom Go joacă numai cu pietrele proprii și cu cele dezvăluite.
 
-## Teste (în afara pachetului)
+## Teste (runda 8)
+
+`tests/fff-r8.test.mjs` (Playwright, rețea blocată, `node tests/fff-r8.test.mjs`): 10 secțiuni, 120 de verificări, 0 eșecuri — P2P între două pagini (loopback), analizor determinist, provocarea zilei determinată de dată, explicații pentru mutări ilegale, tastatură, turneu Elo, axe-core cu 0 încălcări (inclusiv dialoguri și fereastra kitului), 0 `pageerror`/încălcări CSP, fără depășire orizontală la 360×740 și 1280×800. Aplicația este numai în temă întunecată, deci contrastul se verifică într-o singură temă.
+
+## Teste anterioare (în afara pachetului)
 
 Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului):
 
@@ -95,7 +111,7 @@ Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului)
 
 ## Confidențialitate și rețea
 
-Fără rețea, cont sau telemetrie; CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`gff.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Patreon/Coffee din subsol se deschid doar la clic (`rel=noopener`).
+Fără cont sau telemetrie; implicit fără nicio cerere de rețea. Doar dacă porniți explicit „Joc în doi” se deschide o conexiune WebRTC directă către adversar (semnalizare copiată manual; STUN public doar cu acord explicit). CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`gff.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Patreon/Coffee din subsol se deschid doar la clic (`rel=noopener`).
 
 ## Limite și avertismente
 
@@ -106,6 +122,7 @@ Fără rețea, cont sau telemetrie; CSP strict (`default-src 'none'`, script per
 - Phantom Go este aproximat (AI fără informații despre pietrele tale ascunse; poate încerca puncte ocupate).
 - AI-ul este slab pe 19×19; nu este un jucător de nivel de club.
 - Variantele „doar în atlas” nu sunt implementate.
+- Joc în doi: fără ceas/AI/anulare, fără reluare după reîncărcare; SGF-ul și capturile nu sunt sincronizate separat. Analizorul și simulările din turneu folosesc iterații reduse și sunt aproximative. Maghiara este parțială.
 
 ## Surse
 
@@ -116,6 +133,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
 
 ## Istoric / Changelog
+
+### 14 octombrie 2026 — versiunea 1.1.0
+- Joc în doi prin FFF.p2p (lockstep), analizor local, provocarea zilei, „de ce nu pot muta?”, joc de la tastatură cu anunțuri audio, turneu Elo local; limba maghiară (parțială); kit FFF (`core,label,bundle,qr,p2p,tts`); teste `tests/fff-r8.test.mjs`. Fără regresii de reguli (motorul de joc nemodificat).
 
 ### 12 octombrie 2026 — versiunea 1.0.0
 - 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație
@@ -141,4 +161,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## English summary
 
-Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 7 languages, long texts RO+EN. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License undeclared.
+Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified; Hungarian partial), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License undeclared.

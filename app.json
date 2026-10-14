@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "slug": "go-fara-frontiere",
+  "name": "Go fără frontiere",
+  "version": "1.1.0",
+  "updated": "2026-10-14",
+  "description": "Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.",
+  "egress": [],
+  "permissions": [
+    "speechSynthesis",
+    "serviceWorker",
+    "localStorage",
+    "Web Crypto",
+    "Worker"
+  ],
+  "storageKeys": [],
+  "sizeBytes": 683482,
+  "sha256": "873438e3b9bed03ea292b0d20a3e8f5453b86dd4f6ad303104f2a11af918b5cf",
+  "csp": {
+    "present": true,
+    "directives": {
+      "default-src": "'none'",
+      "script-src": "sha256×3",
+      "worker-src": "'self' blob:",
+      "style-src": "'unsafe-inline'",
+      "img-src": "'self' data:",
+      "base-uri": "'none'",
+      "form-action": "'none'",
+      "manifest-src": "'self'"
+    },
+    "scriptInline": "hash",
+    "connect": "'none'"
+  },
+  "features": {
+    "export": true,
+    "import": true,
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "manifest": true,
+      "serviceWorker": true
+    },
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "qr",
+      "p2p",
+      "tts"
+    ]
+  },
+  "kit": {
+    "version": "1.0.0",
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "qr",
+      "p2p",
+      "tts"
+    ]
+  },
+  "selfSerializing": false
+}
