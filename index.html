@@ -2654,14 +2654,14 @@ dialog.fff-p2p .fff-p2p-warn{background:#3b2f0e;color:#ffe9b0;border-color:#d9a4
   Go-fara-frontiere
   Autor: Alexandru-Ionuț Chiuță (Alexio · „Ecoul Stringurilor") · alexio@trom.tf
   Aplicație single-file, offline, fără telemetrie, fără dependențe externe.
-  Licență: nedeclarată (decizia autorului).
+  Licență: MIT (vezi fișierul LICENSE).
 
   Sprijin voluntar (opțional, niciodată obligatoriu):
     Patreon:         https://www.patreon.com/c/alexio_tf
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bTiB/NASsdQLojWWhhGhUQisJ7D/V0RuA759loSiY2U=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-PbHkSMhaSoZ1r4jEWc3f4EpdEBoZafIlp2vBXqvfPdk='; worker-src 'self' blob:; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bTiB/NASsdQLojWWhhGhUQisJ7D/V0RuA759loSiY2U=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-vBuNdzSH4xXkBvaR7/L3dtmnE2qJkXCmy/a1dkWq+lQ='; worker-src 'self' blob:; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; manifest-src 'self'">
 <meta name="application-version" content="1.1.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -4062,7 +4062,7 @@ const UI = {
     "tab.sgf": "SGF",
     "tab.about": "Despre",
     "note.en": "Text în engleză (traducerea completă există doar în română și engleză).",
-    "foot": "Go fără frontiere · aplicație offline, fără telemetrie · licență nedeclarată (decizia autorului)",
+    "foot": "Go fără frontiere · aplicație offline, fără telemetrie · licență MIT",
     "version": "Versiune",
     "black": "Negru",
     "white": "Alb",
@@ -4326,7 +4326,7 @@ const UI = {
     "tab.sgf": "SGF",
     "tab.about": "About",
     "note.en": "English text (full translations exist only in Romanian and English).",
-    "foot": "Go without borders · offline app, no telemetry · licence undeclared (the author's decision)",
+    "foot": "Go without borders · offline app, no telemetry · licence MIT",
     "version": "Version",
     "black": "Black",
     "white": "White",
@@ -4590,7 +4590,7 @@ const UI = {
     "tab.sgf": "SGF",
     "tab.about": "À propos",
     "note.en": "Texte en anglais (la traduction complète n'existe qu'en roumain et en anglais).",
-    "foot": "Go sans frontières · application hors ligne, sans télémétrie · licence non déclarée (décision de l'auteur)",
+    "foot": "Go sans frontières · application hors ligne, sans télémétrie · licence MIT",
     "version": "Version",
     "black": "Noir",
     "white": "Blanc",
@@ -5118,7 +5118,7 @@ const UI = {
     "tab.sgf": "SGF",
     "tab.about": "Acerca de",
     "note.en": "Texto en inglés (la traducción completa solo existe en rumano e inglés).",
-    "foot": "Go sin fronteras · aplicación sin conexión, sin telemetría · licencia sin declarar (decisión del autor)",
+    "foot": "Go sin fronteras · aplicación sin conexión, sin telemetría · licencia MIT",
     "version": "Versión",
     "black": "Negro",
     "white": "Blanco",
@@ -5646,7 +5646,7 @@ const UI = {
     "tab.sgf": "SGF",
     "tab.about": "Info",
     "note.en": "Englischer Text (die vollständige Übersetzung gibt es nur auf Rumänisch und Englisch).",
-    "foot": "Go ohne Grenzen · Offline-App, keine Telemetrie · Lizenz nicht erklärt (Entscheidung des Autors)",
+    "foot": "Go ohne Grenzen · Offline-App, keine Telemetrie · Lizenz MIT",
     "version": "Version",
     "black": "Schwarz",
     "white": "Weiß",
@@ -6170,8 +6170,8 @@ const ABOUT = {
     en: 'Open index.html straight from the file (double-click) or serve the folder with any static server. No installation or internet needed.'
   },
   author: {
-    ro: 'Alexandru-Ionuț Chiuță (Alexio · „Ecoul Stringurilor”), alexio@trom.tf. Licență nedeclarată (decizia autorului).',
-    en: 'Alexandru-Ionuț Chiuță (Alexio · “Echo of the Strings”), alexio@trom.tf. Licence undeclared (the author\'s decision).'
+    ro: 'Alexandru-Ionuț Chiuță (Alexio · „Ecoul Stringurilor”), alexio@trom.tf. Licență MIT.',
+    en: 'Alexandru-Ionuț Chiuță (Alexio · “Echo of the Strings”), alexio@trom.tf. Licence MIT.'
   },
   solver: {
     ro: 'Pentru fiecare problemă, un solver de forță brută (căutare alfa-beta cu tabel de transpoziții, pe zona mică afișată) a confirmat că prima mutare indicată îi permite jucătorului să forțeze scopul (piatra țintă capturată, sau grupul țintă necondiționat viu conform algoritmului Benson) în cel mult D semi-mutări împotriva ORICĂREI apărări, inclusiv pas; mulțimea mutărilor câștigătoare s-a verificat și la D+2 (stabilă). Ce NU garantează: ko, seki și „viu în seki” nu contează ca succes; se folosește doar ko simplu (fără superko); zona este izolată (zidurile marcate cu pătrat sunt considerate permanente, marginile sunt margini reale de tablă); nu se pretinde că soluția e singura sau cea mai scurtă într-o partidă întreagă. O problemă pe care solverul nu a confirmat-o nu a fost inclusă.',

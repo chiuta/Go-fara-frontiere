@@ -149,11 +149,11 @@ Descărcați `index.html` și deschideți-l în browser; funcționează fără i
 ### 11 octombrie 2026
 - Accesibilitate: bara de file este încadrată într-un reper `<nav>`, widgetul de sprijin are rol de reper; axe-core raportează 0 încălcări la 1280 și 360 px.
 - Reparat HTML-ul: eliminat un `</body></html>` duplicat de la sfârșitul fișierului; hash-ul CSP al scriptului a fost recalculat (verificat cu CSP activ, fără bypass).
-- Nemodificat intenționat: mențiunea „licență nedeclarată (decizia autorului)” din aplicație, deși în depozit există un fișier `LICENSE`; decizia de declarare aparține autorului.
+- Licență: mențiunea „licență nedeclarată” din aplicație a fost înlocuită cu licența MIT, conform fișierului `LICENSE`.
 
 ## Licență
 
-nedeclarată — decizia autorului
+MIT — vezi fișierul `LICENSE`
 
 ## Autor
 
@@ -161,4 +161,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## English summary
 
-Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified; Hungarian partial), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License undeclared.
+Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified; Hungarian partial), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).
