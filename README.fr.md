@@ -10,7 +10,7 @@ Le go (Baduk, Weiqi, Igo) dans un seul fichier HTML hors ligne : goban 5×5–19
 
 **Application en ligne :** https://chiuta.github.io/Go-fara-frontiere/
 
-![Capture d'écran](screenshot.png)
+![Capture d'écran](screenshot.fr.png)
 
 ## De quoi s'agit-il
 

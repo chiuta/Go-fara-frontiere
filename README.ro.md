@@ -10,7 +10,7 @@ Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×1
 
 **Live:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Captura de ecran](screenshot.png)
+![Captura de ecran](screenshot.ro.png)
 
 ## Ce este
 

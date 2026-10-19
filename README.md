@@ -10,7 +10,7 @@ Go (Baduk, Weiqi, Igo) in a single offline HTML file: 5×5–19×19 board, four 
 
 **Live app:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.en.png)
 
 ## What it is
 

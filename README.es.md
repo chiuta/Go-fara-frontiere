@@ -10,7 +10,7 @@ El Go (Baduk, Weiqi, Igo) en un único archivo HTML sin conexión: tablero de 5�
 
 **Aplicación en línea:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Captura de pantalla](screenshot.png)
+![Captura de pantalla](screenshot.es.png)
 
 ## Qué es
 

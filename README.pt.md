@@ -10,7 +10,7 @@ O Go (Baduk, Weiqi, Igo) num único ficheiro HTML offline: tabuleiro de 5×5 a 1
 
 **Aplicação online:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Captura de ecrã](screenshot.png)
+![Captura de ecrã](screenshot.pt.png)
 
 ## O que é
 

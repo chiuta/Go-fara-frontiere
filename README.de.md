@@ -10,7 +10,7 @@ Go (Baduk, Weiqi, Igo) in einer einzigen Offline-HTML-Datei: Brett von 5×5 bis 
 
 **Online-Anwendung:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 ## Was es ist
 

@@ -10,7 +10,7 @@ A Go (Baduk, Weiqi, Igo) egyetlen offline HTML-fájlban: 5×5–19×19-es tábla
 
 **Online alkalmazás:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Képernyőkép](screenshot.png)
+![Képernyőkép](screenshot.hu.png)
 
 ## Mi ez
 

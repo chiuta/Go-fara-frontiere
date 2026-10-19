@@ -10,7 +10,7 @@ Il Go (Baduk, Weiqi, Igo) in un unico file HTML offline: goban 5×5–19×19, qu
 
 **Applicazione online:** https://chiuta.github.io/Go-fara-frontiere/
 
-![Schermata](screenshot.png)
+![Schermata](screenshot.it.png)
 
 ## Che cos'è
 
