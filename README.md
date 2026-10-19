@@ -1,164 +1,166 @@
 # Go fără frontiere
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×19, patru seturi de reguli, adversar AI (MCTS), 12 variante jucabile, lecții, probleme de tsume verificate de un solver și SGF.
+**Version:** 1.1.0 · **Last updated:** 2026-10-14
 
-**Live:** https://chiuta.github.io/Go-fara-frontiere/
+Go (Baduk, Weiqi, Igo) in a single offline HTML file: 5×5–19×19 board, four rule sets, AI opponent (MCTS), 12 playable variants, lessons, tsume problems verified by a solver, and SGF.
 
-![Captura de ecran](screenshot.png)
+**Live app:** https://chiuta.github.io/Go-fara-frontiere/
 
-## Ce este
+![Screenshot](screenshot.png)
 
-Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv de Go contra unui adversar AI local (căutare Monte-Carlo pe arbore, nu LLM, nu rețea neuronală). Motorul de reguli este separat de interfață și testat în Node. Nicio cerere de rețea.
+## What it is
 
-## Funcții (verificate în cod și teste)
+An atlas (18 sheets: origin, rules, approximations ⚠, sources) and an actual game of Go against a local AI opponent (Monte-Carlo tree search, not an LLM, not a neural network). The rules engine is separate from the interface and tested in Node. No network requests.
 
-- **Table:** 5×5, 7×7, 9×9, 13×13, 19×19; hoshi, coordonate, piese mari în SVG scalabil; marcaje: ultima mutare, ko, teritoriu estimat; previzualizare la trecerea cursorului.
-- **Reguli în cod:** captură pe libertăți de lanț; sinuciderea interzisă (japoneză, chineză, AGA) sau permisă (Tromp–Taylor / personalizat); ko simplu, superko pozițional (PSK) și situațional (SSK).
-- **Seturi de reguli:** japoneză (teritoriu + prizonieri, komi 6,5, ⚠), chineză (zonă, 7,5, ⚠), AGA (zonă; pietrele de pas contează doar pentru paritate, NU se adună la scorul pe zonă, 7,5, ⚠), Tromp–Taylor (formală, scor automat, fără marcarea pietrelor moarte, 7,5), personalizat. Komi editabil; la handicap: japoneză/TT 0,5, AGA 0,5+(h−1), chineză h.
-- **Handicap 2–9** cu poziții standard pe 9×9, 13×13, 19×19.
-- **Sfârșit de partidă:** două pase → marcarea pietrelor moarte (clic pe grup) cu sugestie automată de la AI (cu confirmare) → scor detaliat (pietre, teritoriu, prizonieri, komi, puncte neutre).
-- **Moduri:** contra AI (alegi culoarea sau aleator), doi jucători pe același ecran, Rengo 2 contra 2 (partenerul și adversarii pot fi AI), Phantom Go ⚠ contra AI.
-- **AI:** MCTS (UCT + RAVE) cu simulări ușoare (capturi/scăpări din atari, tipare 3×3, nu umple ochi proprii, evită self-atari), 5 niveluri cu iterații și timp configurabile, butonul „Oprește / gândește mai puțin”, rulează într-un Web Worker (din Blob) și, dacă nu e permis, pe firul principal în felii de ~20 ms.
-- **Variante de atlas jucabile:** Atari-Go (Capture Go / Ponnuki-Go: prima captură; opțional țintă 5 sau 10 pietre), Go pe tablă mică (5×5, 7×7), NoGo, Rengo, Phantom Go ⚠, Byo-yomi cu ceas funcțional (timp de bază + perioade).
-- **Sugestie** (💡, în partidele cu pietre vizibile): AI-ul local propune o mutare pentru tine (căutare Monte-Carlo, orientativă), afișată ca mutare de confirmat sau anulat.
-- **Salvare automată:** o partidă nefinalizată se salvează local după fiecare mutare; la următoarea deschidere, fila „Joacă” oferă „Continuă partida” sau „Șterge salvarea” (verificată prin reluare; salvările corupte sunt respinse).
-- **Lecții interactive** (6): pietre, libertăți, captură, ko, doi ochi, seki.
-- **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
-- **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
-- **Interfață:** tastatură completă (săgeți + Enter, P = pas, U = anulează), mod „confirmă mutarea” (implicit pe ecran tactil), zoom 1×/1,6×/2,2× pe mobil, 390 px fără scroll orizontal; anulare doar contra AI sau cu confirmare; fără sunete.
-- **Interfață în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi; maghiara acoperă doar textele noi și elementele de bază, restul cade pe engleză) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
-- **Aleatoriu:** `crypto.getRandomValues` cu rejection sampling (culoarea aleatoare, seed-urile AI); opțiune „Seed” pentru partide reproductibile.
-- **Accesibilitate:** aria-live, focus vizibil, ținte tactile ≥ 44 px (măsurat), contrast ≥ 4,5:1 (măsurat), `prefers-reduced-motion`, `<noscript>`, `lang` dinamic.
+## Features (verified in code and tests)
 
-## Funcții noi (1.1.0)
+- **Boards:** 5×5, 7×7, 9×9, 13×13, 19×19; hoshi, coordinates, large stones in scalable SVG; markers: last move, ko, estimated territory; preview on hover.
+- **Rules in code:** capture by chain liberties; suicide forbidden (Japanese, Chinese, AGA) or allowed (Tromp–Taylor / custom); simple ko, positional superko (PSK) and situational superko (SSK).
+- **Rule sets:** Japanese (territory + prisoners, komi 6.5, ⚠), Chinese (area, 7.5, ⚠), AGA (area; pass stones count only for parity, they are NOT added to the area score, 7.5, ⚠), Tromp–Taylor (formal, automatic scoring, no marking of dead stones, 7.5), custom. Editable komi; with handicap: Japanese/TT 0.5, AGA 0.5+(h−1), Chinese h.
+- **Handicap 2–9** with standard positions on 9×9, 13×13, 19×19.
+- **End of game:** two passes → marking of dead stones (click on a group) with an automatic suggestion from the AI (with confirmation) → detailed score (stones, territory, prisoners, komi, neutral points).
+- **Modes:** against the AI (you choose the colour, or random), two players on the same screen, 2-vs-2 Rengo (the partner and the opponents may be AI), Phantom Go ⚠ against the AI.
+- **AI:** MCTS (UCT + RAVE) with light playouts (captures/escapes from atari, 3×3 patterns, does not fill its own eyes, avoids self-atari), 5 levels with configurable iterations and time, a "Stop / think less" button, runs in a Web Worker (from a Blob) and, if that is not allowed, on the main thread in slices of ~20 ms.
+- **Playable atlas variants:** Atari-Go (Capture Go / Ponnuki-Go: first capture; optionally a target of 5 or 10 stones), small-board Go (5×5, 7×7), NoGo, Rengo, Phantom Go ⚠, Byo-yomi with a working clock (main time + periods).
+- **Hint** (💡, in games with visible stones): the local AI proposes a move for you (Monte-Carlo search, indicative), shown as a move to confirm or cancel.
+- **Autosave:** an unfinished game is saved locally after every move; on the next opening, the "Play" tab offers "Continue game" or "Delete save" (verified by replay; corrupt saves are rejected).
+- **Interactive lessons** (6): stones, liberties, capture, ko, two eyes, seki.
+- **12 tsume-go problems**, each with a solution confirmed by a brute-force solver (see "What the solver guarantees"); correct/wrong feedback with the defender's answer; "Show the solution" step by step.
+- **SGF:** export (with moves, handicap, komi, result); import and replay with a strict parser (FF[4], main line only, limits: 2 MB, 30,000 nodes, depth 256; nothing is executed); "Continue the game from here".
+- **Interface:** full keyboard (arrows + Enter, P = pass, U = undo), "confirm move" mode (default on touch screens), zoom 1×/1.6×/2.2× on mobile, 390 px with no horizontal scroll; undo only against the AI or with confirmation; no sounds.
+- **Interface in 8 languages** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU are machine-translated, not verified by native speakers; Hungarian covers only the new texts and the basic elements, the rest falls back to English) with autodetection; long texts (atlas, lessons, "About"): RO + EN; in FR/IT/ES/PT/DE English is shown, with the note "text in English". Key parity is checked by a script.
+- **Randomness:** `crypto.getRandomValues` with rejection sampling (random colour, AI seeds); a "Seed" option for reproducible games.
+- **Accessibility:** aria-live, visible focus, touch targets ≥ 44 px (measured), contrast ≥ 4.5:1 (measured), `prefers-reduced-motion`, `<noscript>`, dynamic `lang`.
 
-Toate se deschid din butonul „Masa de joc” (jocuri în doi, analiză, provocarea zilei, turneu, accesibilitate). Nu există server și nu se adaugă cereri de rețea în afara celor de mai jos.
+## New features (1.1.0)
 
-- **Joc în doi prin FFF.p2p** (WebRTC, semnalizare manuală prin text sau cod QR, fără server). Gazda este autoritară; oaspetele aplică doar mutările numerotate returnate de gazdă (lockstep, cu sumă de control a poziției). Mutare, pas, abandon, marcarea pietrelor moarte și confirmarea scorului sunt sincronizate; remiză/partidă nouă se propun și se acceptă. Limite: fără ceas, fără AI, fără anulare mutare în partida online, fără reluare după reîncărcarea paginii. Adresa IP este vizibilă adversarului; NAT simetric poate necesita STUN/TURN (STUN public opțional, doar cu acordul explicit din dialog).
-- **Analizor local**: estimare de probabilitate de câștig și de scor cu MCTS cu sămânță fixă (800/500/250 de iterații după mărimea tablei), deci același rezultat pentru aceeași poziție; „Recenzie” a partidei curente cu grafic și mutările care schimbă evaluarea cu ≥ 20 de puncte. Este o estimare statistică, nu un motor de nivel profesionist.
-- **Provocarea zilei**: tablă 9×9 cu pietre plasate din data calendaristică (aceeași pentru toți în aceeași zi), plus problema de tsume a zilei din cele 12 existente; serie de zile consecutive stocată local. Fără rețea.
-- **„De ce nu pot muta?”**: orice mutare ilegală primește o explicație (punct ocupat, ko cu mutarea de interdicție, superko cu numărul mutării, sinucidere cu mărimea lanțului, NoGo etc.), anunțată și pentru cititoare de ecran; buton dedicat și tasta `?`.
-- **Tastatură și anunțuri audio**: cursor pe tablă cu săgeți, Enter/Spațiu pentru a juca, `W` (stare), `C` (coordonate), `L` (ultima mutare), `S` (scor); regiune aria-live și, opțional, voce (Web Speech, local) prin modulul `tts` al kitului.
-- **Turneu Elo local**: dumneavoastră + adversari AI (Elo 500 + 200·nivel), tur-retur, clasament recalculat din rezultate; meciurile între AI se simulează pe 5×5/7×7/9×9 cu iterații reduse (Tromp–Taylor); clasamentul Elo este relativ și orientativ.
-- **Kit FFF** aplicat: `core, label, bundle, qr, p2p, tts` (fereastra de transparență, `app.json`). CSP-ul rămâne `default-src 'none'`; s-au recalculat doar hash-urile scripturilor.
+All of them open from the "Game table" button (two-player games, analysis, daily challenge, tournament, accessibility). There is no server, and no network requests are added beyond those below.
 
-## Variante
+- **Two-player game via FFF.p2p** (WebRTC, manual signalling through text or QR code, no server). The host is authoritative; the guest applies only the numbered moves returned by the host (lockstep, with a position checksum). Move, pass, resign, marking of dead stones and score confirmation are synchronised; draw/new game are proposed and accepted. Limits: no clock, no AI, no move undo in the online game, no resume after the page is reloaded. The IP address is visible to the opponent; a symmetric NAT may require STUN/TURN (public STUN optional, only with explicit consent in the dialog).
+- **Local analyzer**: win-probability and score estimate with MCTS using a fixed seed (800/500/250 iterations depending on board size), hence the same result for the same position; a "Review" of the current game with a graph and the moves that change the evaluation by ≥ 20 points. It is a statistical estimate, not a professional-level engine.
+- **Daily challenge**: a 9×9 board with stones placed from the calendar date (the same for everyone on the same day), plus the day's tsume problem from the existing 12; streak of consecutive days stored locally. No network.
+- **"Why can't I move?"**: every illegal move gets an explanation (occupied point, ko with the prohibited move, superko with the move number, suicide with the chain size, NoGo, etc.), also announced for screen readers; a dedicated button and the `?` key.
+- **Keyboard and audio announcements**: cursor on the board with the arrows, Enter/Space to play, `W` (status), `C` (coordinates), `L` (last move), `S` (score); aria-live region and, optionally, voice (Web Speech, local) through the kit's `tts` module.
+- **Local Elo tournament**: you + AI opponents (Elo 500 + 200·level), round-robin home and away, standings recalculated from the results; AI-vs-AI games are simulated on 5×5/7×7/9×9 with reduced iterations (Tromp–Taylor); the Elo ranking is relative and indicative.
+- **FFF kit** applied: `core, label, bundle, qr, p2p, tts` (the transparency window, `app.json`). The CSP remains `default-src 'none'`; only the script hashes were recalculated.
 
-| Nume | Jucabil? | ⚠ Aproximări |
+## Variants
+
+| Name | Playable? | ⚠ Approximations |
 |---|---|---|
-| Go (clasic), 9×9 / 13×13 / 19×19 | da | — |
-| Reguli japoneze (teritoriu) | da | ⚠ seki: ochii din interiorul unui seki nu se detectează; ko simplu (fără „fără rezultat”); fără reguli de arbitraj |
-| Reguli chineze (zonă) | da | ⚠ superko pozițional în loc de regula oficială de repetare; komi 7,5 (valoarea modernă) |
-| Reguli AGA | da | ⚠ verificate la audit față de textul AGA 1991; situațional ales pentru repetare; fără arbitraj |
-| Tromp–Taylor | da | — (formală; sinucidere permisă, scor automat) |
-| Go pe tablă mică (5×5, 7×7) | da | — |
-| Handicap 2–9 | da | ⚠ poziții tradiționale doar pe 19×19; pe 9×9/13×13 extrapolate (verificat audit) |
-| Atari-Go / Capture Go / Ponnuki-Go (țintă 1, 5 sau 10) | da | — |
-| NoGo | da | — (cine nu mai are mutare legală pierde) |
-| Rengo 2 contra 2 | da | — (jucătorii echipei joacă pe rând; AI pentru locuri libere) |
-| Phantom Go | da | ⚠ AI-ul nu cunoaște pietrele tale ascunse și poate încerca puncte ocupate; scor pe zonă; fără export SGF în timpul partidei |
-| Byo-yomi | da | — (ceas cu perioade; pierzi la depășire) |
-| Go în pereche, toroidal, hexagonal, în trei, Ing, Noua Zeelandă | doar în atlas | — |
+| Go (classic), 9×9 / 13×13 / 19×19 | yes | — |
+| Japanese rules (territory) | yes | ⚠ seki: eyes inside a seki are not detected; simple ko (no "no result"); no arbitration rules |
+| Chinese rules (area) | yes | ⚠ positional superko instead of the official repetition rule; komi 7.5 (the modern value) |
+| AGA rules | yes | ⚠ checked at audit against the 1991 AGA text; situational chosen for repetition; no arbitration |
+| Tromp–Taylor | yes | — (formal; suicide allowed, automatic scoring) |
+| Small-board Go (5×5, 7×7) | yes | — |
+| Handicap 2–9 | yes | ⚠ traditional positions only on 19×19; on 9×9/13×13 extrapolated (checked at audit) |
+| Atari-Go / Capture Go / Ponnuki-Go (target 1, 5 or 10) | yes | — |
+| NoGo | yes | — (whoever has no legal move left loses) |
+| 2-vs-2 Rengo | yes | — (the team's players alternate; AI for free seats) |
+| Phantom Go | yes | ⚠ the AI does not know your hidden stones and may try occupied points; area scoring; no SGF export during the game |
+| Byo-yomi | yes | — (clock with periods; you lose on overtime) |
+| Pair Go, toroidal, hexagonal, three-player, Ing, New Zealand | atlas only | — |
 
-## Ce garantează solverul de tsume
+## What the tsume solver guarantees
 
-Pentru fiecare problemă, o căutare alfa-beta cu tabel de transpoziții, pe zona mică afișată, a confirmat că prima mutare indicată îi permite jucătorului să forțeze scopul (grupul țintă capturat, sau viu necondiționat conform algoritmului Benson) în cel mult D semi-mutări împotriva ORICĂREI apărări, inclusiv pas; mulțimea mutărilor câștigătoare s-a verificat și la D+2. Nu garantează: ko, seki sau „viu în seki” nu contează ca succes; doar ko simplu; zona e izolată (zidurile marcate cu pătrat sunt permanente); nu pretinde unicitatea în partida întreagă. Cele 12 probleme sunt: 6 forme de spațiu de ochi (3 în linie, 3 îndoit, 4 în T, 4 pătrat, 5 grămadă, 5 cruce) de omorât, 4 de făcut vii, și 2 capturi mici găsite prin căutare. Un set mai bogat de tesuji (snapback, ladder, net) nu a fost inclus: nu am găsit probleme pe care solverul să le confirme și care să fie și naturale.
+For each problem, an alpha-beta search with a transposition table, on the small displayed area, confirmed that the first move indicated allows the player to force the goal (target group captured, or unconditionally alive according to Benson's algorithm) in at most D half-moves against ANY defence, including a pass; the set of winning moves was also verified at D+2. It does not guarantee: ko, seki or "alive in seki" do not count as success; only simple ko; the area is isolated (the walls marked with a square are permanent); it does not claim uniqueness in the whole game. The 12 problems are: 6 eye-space shapes (3 in a row, 3 bent, 4 T, 4 square, 5 bulky, 5 cross) to kill, 4 to make alive, and 2 small captures found by search. A richer set of tesuji (snapback, ladder, net) was not included: I did not find problems that the solver confirms and that are also natural.
 
-## Manual de utilizare
+## User guide
 
-1. Fila „Joacă”: alege varianta, tabla, setul de reguli, modul și nivelul AI; „Începe partida”. (Sau din „Atlas” → „▶ Joacă” pentru un preset.)
-2. Mută cu clic/atingere (pe mobil confirmi mutarea) sau cu tastatura: săgeți = cursor, Enter = pune piatra, P = pas, U = anulează.
-3. Butonul „Estimează teritoriul” afișează o estimare statistică; „Oprește / gândește mai puțin” scurtează gândirea AI.
-4. După două pase marchezi pietrele moarte: clic pe un grup (sau „Sugerează automat”), apoi „Confirmă scorul”. În Tromp–Taylor scorul este automat.
-5. „Exportă SGF” descarcă partida; fila „SGF” încarcă și reia un fișier sau un text lipit.
-6. „Lecții” și „Probleme” au feedback imediat; progresul se păstrează local (dacă browserul permite).
+1. "Play" tab: choose the variant, the board, the rule set, the mode and the AI level; "Start game". (Or from "Atlas" → "▶ Play" for a preset.)
+2. Move by click/tap (on mobile you confirm the move) or with the keyboard: arrows = cursor, Enter = place the stone, P = pass, U = undo.
+3. The "Estimate territory" button displays a statistical estimate; "Stop / think less" shortens the AI's thinking.
+4. After two passes you mark the dead stones: click on a group (or "Suggest automatically"), then "Confirm score". In Tromp–Taylor the score is automatic.
+5. "Export SGF" downloads the game; the "SGF" tab loads and replays a file or a pasted text.
+6. "Lessons" and "Problems" have immediate feedback; progress is kept locally (if the browser allows).
 
-## Nivelul AI (descriere onestă)
+## AI level (an honest description)
 
-Nu este un LLM și nu are rețea neuronală. MCTS cu simulări ușoare: ~7 700 de simulări/s pe 9×9 și ~1 600/s pe 19×19 în Node (mașina de test); în browser variază. Nivelurile 1–5 înseamnă 0 / 100 / 500 / 2 500 / 10 000 de iterații (cu limită de timp). Măsurat pe 9×9, komi 7,5, reguli chineze, culori alternate (`tests/match.js`, `tests/vs_random.js`):
+It is not an LLM and has no neural network. MCTS with light playouts: ~7,700 playouts/s on 9×9 and ~1,600/s on 19×19 in Node (the test machine); in the browser it varies. Levels 1–5 mean 0 / 100 / 500 / 2,500 / 10,000 iterations (with a time limit). Measured on 9×9, komi 7.5, Chinese rules, alternating colours (`tests/match.js`, `tests/vs_random.js`):
 
-| Meci (9×9, komi 7,5, culori alternate) | Rezultat | Jocuri |
+| Match (9×9, komi 7.5, alternating colours) | Result | Games |
 |---|---|---|
-| Nivel 1 (euristic, 0 iterații) contra aleator | 34–6 (85%) | 40 |
-| Nivel 2 (100 iterații) contra aleator | 100–0 (100%) | 100 |
-| Nivel 3 (500 iterații) contra aleator | 40–0 (100%) | 40 |
-| Nivel 2 contra nivel 1 | 40–0 | 40 |
-| Nivel 3 contra nivel 2 | 31–9 (78%) | 40 |
-| Nivel 4 (2 500) contra nivel 3 | 21–9 (70%) | 30 |
-| Nivel 5 (10 000) contra nivel 4 | 15–5 (75%) | 20 |
+| Level 1 (heuristic, 0 iterations) vs random | 34–6 (85%) | 40 |
+| Level 2 (100 iterations) vs random | 100–0 (100%) | 100 |
+| Level 3 (500 iterations) vs random | 40–0 (100%) | 40 |
+| Level 2 vs level 1 | 40–0 | 40 |
+| Level 3 vs level 2 | 31–9 (78%) | 40 |
+| Level 4 (2,500) vs level 3 | 21–9 (70%) | 30 |
+| Level 5 (10,000) vs level 4 | 15–5 (75%) | 20 |
 
-Cu 20–40 de jocuri, intervalul de încredere (95%) este de ordinul ±15–20 puncte procentuale pentru rândurile cu ≤ 40 de jocuri; diferențele dintre niveluri sunt reale, dar valorile exacte nu. Meciurile sunt AI contra AI (același motor), deci diferențele de forță între niveluri sunt probabil supraestimate față de oameni.
+With 20–40 games, the confidence interval (95%) is of the order of ±15–20 percentage points for the rows with ≤ 40 games; the differences between levels are real, but the exact values are not. The matches are AI vs AI (the same engine), so the differences in strength between levels are probably overestimated relative to humans.
 
-Rangul NU este măsurat (nu există motor cotat sau jucători umani de referință în mediul de construcție); orice echivalent în kyu ar fi speculație, deci nu se afirmă unul. Nivelurile 1–2 sunt pentru începători absoluți. Pe 19×19 este mult mai slab și mai lent. AI-ul nu trișează: primește doar tabla, istoricul mutărilor și regulile; în Phantom Go joacă numai cu pietrele proprii și cu cele dezvăluite.
+The rank is NOT measured (there is no rated engine or reference human players in the build environment); any kyu equivalent would be speculation, so none is claimed. Levels 1–2 are for absolute beginners. On 19×19 it is much weaker and slower. The AI does not cheat: it receives only the board, the move history and the rules; in Phantom Go it plays only with its own stones and the revealed ones.
 
-## Teste (runda 8)
+## Tests (round 8)
 
-`tests/fff-r8.test.mjs` (Playwright, rețea blocată, `node tests/fff-r8.test.mjs`): 10 secțiuni, 120 de verificări, 0 eșecuri — P2P între două pagini (loopback), analizor determinist, provocarea zilei determinată de dată, explicații pentru mutări ilegale, tastatură, turneu Elo, axe-core cu 0 încălcări (inclusiv dialoguri și fereastra kitului), 0 `pageerror`/încălcări CSP, fără depășire orizontală la 360×740 și 1280×800. Aplicația este numai în temă întunecată, deci contrastul se verifică într-o singură temă.
+`tests/fff-r8.test.mjs` (Playwright, network blocked, `node tests/fff-r8.test.mjs`): 10 sections, 120 checks, 0 failures — P2P between two pages (loopback), deterministic analyzer, date-determined daily challenge, explanations for illegal moves, keyboard, Elo tournament, axe-core with 0 violations (including dialogs and the kit window), 0 `pageerror`/CSP violations, no horizontal overflow at 360×740 and 1280×800. The app is dark-theme only, so contrast is checked in a single theme.
 
-## Teste anterioare (în afara pachetului)
+## Earlier tests (outside the package)
 
-Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului):
+Run from `scratchpad/new/games_work/Go-fara-frontiere/` (outside the package):
 
-- `node tests/run.js` — 158 de verificări, 0 eșecuri: configurații clasice (scară/ladder și snapback găsite prin căutare și reluate cu implementarea de referință, ko, seki, sinucidere, captură înainte de sinucidere), superko, scor japonez vs chinez pe poziții cu rezultat calculat de mână (identitate de scor: diferența de zonă minus diferența de teritoriu = pietre puse de Negru minus pietre puse de Alb, conform Sensei's Library), handicap, ceas byo-yomi, SGF (round-trip pe 600 de partide generate; respingerea fișierelor prea mari, prea adânc imbricate, cu valori uriașe sau malformate).
-- Comparare cu o implementare de referință independentă (flood-fill brut): 100 000 de poziții aleatoare în 588 de partide, 602 976 de verificări de legalitate, 0 divergențe (în `tests/run.js`).
-- `node tests/fuzz.js 9 500` — 500 de partide AI contra AI pe 9×9 (52 291 de mutări), fiecare mutare validată de referință: 0 mutări ilegale, 0 invarianți încălcați. `node tests/fuzz.js 13 100` — 100 de partide pe 13×13 (20 839 de mutări): 0 ilegale. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 ilegale.
-- `node tests/vs_random.js 100 100` — MCTS cu 100 de iterații bate jucătorul aleator 100–0 pe 9×9 (cerință ≥ 95%).
-- `node tests/tsume_verify.js` — re-rezolvă cele 12 probleme: soluția stocată, adâncimea minimă, stabilitatea la D+2, refutarea fiecărei mutări greșite.
-- `node tests/i18n-parity.js` — 254 de chei × 7 limbi, placeholdere identice, toate cheile folosite în cod există. `node tests/rng.js` (uniformitate `secureInt`, seed reproductibil), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (regresie pentru o eroare găsită în meciuri lungi: depășirea contorului Int32 din flood-fill).
-- Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 de verificări UI, 0 eșecuri — tastatură, undo, schimbarea limbii, export/import SGF, SGF invalid respins, rezolvarea prin UI a tuturor celor 12 probleme, partidă 5×5 completă până la marcare și scor, toate cele 12 presetări jucabile, estimare de teritoriu, ceas byo-yomi, mobil 390 px (fără scroll orizontal, ținte ≥ 44 px, confirmarea mutării), `localStorage` blocat, fără Worker (fallback), 0 cereri de rețea, 0 erori de consolă.
+- `node tests/run.js` — 158 checks, 0 failures: classic configurations (ladder and snapback found by search and replayed with the reference implementation, ko, seki, suicide, capture before suicide), superko, Japanese vs Chinese scoring on positions with a hand-computed result (score identity: area difference minus territory difference = stones placed by Black minus stones placed by White, according to Sensei's Library), handicap, byo-yomi clock, SGF (round-trip on 600 generated games; rejection of files that are too large, too deeply nested, with huge values or malformed).
+- Comparison with an independent reference implementation (brute-force flood-fill): 100,000 random positions in 588 games, 602,976 legality checks, 0 divergences (in `tests/run.js`).
+- `node tests/fuzz.js 9 500` — 500 AI-vs-AI games on 9×9 (52,291 moves), each move validated by the reference: 0 illegal moves, 0 invariants violated. `node tests/fuzz.js 13 100` — 100 games on 13×13 (20,839 moves): 0 illegal. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 illegal.
+- `node tests/vs_random.js 100 100` — MCTS with 100 iterations beats the random player 100–0 on 9×9 (requirement ≥ 95%).
+- `node tests/tsume_verify.js` — re-solves the 12 problems: the stored solution, the minimum depth, stability at D+2, refutation of every wrong move.
+- `node tests/i18n-parity.js` — 254 keys × 7 languages, identical placeholders, all keys used in the code exist. `node tests/rng.js` (uniformity of `secureInt`, reproducible seed), `node tests/contrast.js` (≥ 4.5:1), `node tests/stamp_overflow.js` (regression for a bug found in long games: Int32 counter overflow in the flood-fill).
+- Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 UI checks, 0 failures — keyboard, undo, language change, SGF export/import, invalid SGF rejected, solving all 12 problems through the UI, a complete 5×5 game through marking and scoring, all 12 playable presets, territory estimate, byo-yomi clock, mobile 390 px (no horizontal scroll, targets ≥ 44 px, move confirmation), blocked `localStorage`, no Worker (fallback), 0 network requests, 0 console errors.
 
-## Confidențialitate și rețea
+## Privacy and network
 
-Fără cont sau telemetrie; implicit fără nicio cerere de rețea. Doar dacă porniți explicit „Joc în doi” se deschide o conexiune WebRTC directă către adversar (semnalizare copiată manual; STUN public doar cu acord explicit). CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`gff.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Buy Me a Coffee din subsol se deschid doar la clic (`rel=noopener`).
+No account or telemetry; no network requests by default. Only if you explicitly start "Two-player game" is a direct WebRTC connection opened to the opponent (signalling copied manually; public STUN only with explicit consent). Strict CSP (`default-src 'none'`, script allowed only by SHA-256 hash, `worker-src blob:`, no `connect-src`). `localStorage` (in try/catch) only for language, settings, solved problems, local statistics and the autosave of a single unfinished game (`gff.save.v1`: the settings, the moves, your colour and the seed; not for Phantom Go or games with a clock; deleted at the end of the game or with "Delete save"). The Buy Me a Coffee links in the footer open only on click (`rel=noopener`).
 
-## Limite și avertismente
+## Limits and warnings
 
-- Regulile (komi, ko, sinucidere, seki, scor, handicap) au fost verificate la audit față de Wikipedia „Rules of Go”/„Komi”, textul AGA 1991 (British Go Association) și regulile japoneze 1989 (CMU); au rezultat corecturi (pietre de pas AGA, komi la handicap). Regulile chineze oficiale și Nihon Ki-in 2003 nu s-au putut citi integral (⚠).
-- „Seed” reproduce partida doar dacă AI-ul nu e oprit de limita de timp (iterațiile pot varia după viteza mașinii).
-- Seki: punctele cu libertăți comune sunt neutre, dar ochii din interiorul unui seki nu se detectează; ko simplu fără „fără rezultat” la japoneză; limită de siguranță la 4·n² mutări (remiză).
-- Estimarea teritoriului și sugestia pietrelor moarte sunt statistice și pot greși.
-- Phantom Go este aproximat (AI fără informații despre pietrele tale ascunse; poate încerca puncte ocupate).
-- AI-ul este slab pe 19×19; nu este un jucător de nivel de club.
-- Variantele „doar în atlas” nu sunt implementate.
-- Joc în doi: fără ceas/AI/anulare, fără reluare după reîncărcare; SGF-ul și capturile nu sunt sincronizate separat. Analizorul și simulările din turneu folosesc iterații reduse și sunt aproximative. Maghiara este parțială.
+- The rules (komi, ko, suicide, seki, scoring, handicap) were checked at audit against Wikipedia "Rules of Go"/"Komi", the 1991 AGA text (British Go Association) and the 1989 Japanese rules (CMU); corrections resulted (AGA pass stones, komi in handicap games). The official Chinese rules and Nihon Ki-in 2003 could not be read in full (⚠).
+- "Seed" reproduces the game only if the AI is not stopped by the time limit (iterations may vary with the machine's speed).
+- Seki: points with shared liberties are neutral, but eyes inside a seki are not detected; simple ko without "no result" in Japanese rules; safety limit at 4·n² moves (draw).
+- The territory estimate and the dead-stone suggestion are statistical and may be wrong.
+- Phantom Go is approximated (the AI has no information about your hidden stones; it may try occupied points).
+- The AI is weak on 19×19; it is not a club-level player.
+- The "atlas only" variants are not implemented.
+- Two-player game: no clock/AI/undo, no resume after reload; the SGF and the captures are not synchronised separately. The analyzer and the tournament simulations use reduced iterations and are approximate. Hungarian is partial.
 
-## Surse
+## Sources
 
-Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules, Ko, Superko, Komi, Handicap, Seki, Scoring) · regulile Tromp–Taylor · American Go Association · specificația SGF FF[4] · D. B. Benson (1976, viață necondiționată) · Kocsis & Szepesvári (2006, UCT) · Gelly & Silver (2007, RAVE). Verificate parțial online la audit (vezi raportul de audit).
+Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules, Ko, Superko, Komi, Handicap, Seki, Scoring) · the Tromp–Taylor rules · American Go Association · the SGF FF[4] specification · D. B. Benson (1976, unconditional life) · Kocsis & Szepesvári (2006, UCT) · Gelly & Silver (2007, RAVE). Partly checked online at audit (see the audit report).
 
-## Rulare locală
+## Running locally
 
-Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
+Download `index.html` and open it in a browser; it works without internet.
 
-## Istoric / Changelog
+## History / Changelog
 
-### 14 octombrie 2026 — versiunea 1.1.0
-- Joc în doi prin FFF.p2p (lockstep), analizor local, provocarea zilei, „de ce nu pot muta?”, joc de la tastatură cu anunțuri audio, turneu Elo local; limba maghiară (parțială); kit FFF (`core,label,bundle,qr,p2p,tts`); teste `tests/fff-r8.test.mjs`. Fără regresii de reguli (motorul de joc nemodificat).
+### 14 October 2026 — version 1.1.0
+- Two-player game via FFF.p2p (lockstep), local analyzer, daily challenge, "why can't I move?", keyboard play with audio announcements, local Elo tournament; Hungarian language (partial); FFF kit (`core,label,bundle,qr,p2p,tts`); tests `tests/fff-r8.test.mjs`. No rules regressions (the game engine unchanged).
 
-### 12 octombrie 2026 — versiunea 1.0.0
-- 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație
+### 12 October 2026 — version 1.0.0
+- 1.0.0 — 2026-10-12: the version and the date of the last update are displayed in the app
 
-### 11 octombrie 2026 (a treia trecere)
-- Nota despre komi la handicap (RO/EN): AGA „h−0,5” și „0,5 + (h−1)” sunt aceeași valoare, acum formulat ca atare (înainte părea că sunt două formule). CSP: hash recalculat.
+### 11 October 2026 (third pass)
+- The note about komi in handicap games (RO/EN): AGA "h−0.5" and "0.5 + (h−1)" are the same value, now worded as such (before it looked as if there were two formulas). CSP: hash recalculated.
 
-### 11 octombrie 2026 (a doua trecere)
-- Salvare automată a partidei în curs cu „Continuă partida” (validare strictă + reluare, text nou în toate cele 7 limbi); buton „Sugestie” care propune o mutare cu motorul MCTS local; CSP: hash recalculat.
+### 11 October 2026 (second pass)
+- Autosave of the game in progress with "Continue game" (strict validation + replay, new text in all 7 languages); a "Hint" button that proposes a move with the local MCTS engine; CSP: hash recalculated.
 
-### 11 octombrie 2026
-- Accesibilitate: bara de file este încadrată într-un reper `<nav>`, widgetul de sprijin are rol de reper; axe-core raportează 0 încălcări la 1280 și 360 px.
-- Reparat HTML-ul: eliminat un `</body></html>` duplicat de la sfârșitul fișierului; hash-ul CSP al scriptului a fost recalculat (verificat cu CSP activ, fără bypass).
-- Licență: mențiunea „licență nedeclarată” din aplicație a fost înlocuită cu licența MIT, conform fișierului `LICENSE`.
+### 11 October 2026
+- Accessibility: the tab bar is wrapped in a `<nav>` landmark, the support widget has a landmark role; axe-core reports 0 violations at 1280 and 360 px.
+- Fixed the HTML: removed a duplicate `</body></html>` at the end of the file; the script's CSP hash was recalculated (verified with CSP active, no bypass).
+- License: the "license not declared" note in the app was replaced with the MIT license, in line with the `LICENSE` file.
 
-## Licență
+## License
 
-MIT — vezi fișierul `LICENSE`
+MIT — see the `LICENSE` file
 
-## Autor
+## Author
 
 Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
-## English summary
+## Summary
 
 Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified; Hungarian partial), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).
