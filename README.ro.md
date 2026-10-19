@@ -2,7 +2,9 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.0 · **Ultima actualizare:** 2026-10-14
+**Versiune:** 1.2.0 · **Ultima actualizare:** 2026-10-19
+
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Go (Baduk, Weiqi, Igo) într-un singur fișier HTML offline: tablă 5×5–19×19, patru seturi de reguli, adversar AI (MCTS), 12 variante jucabile, lecții, probleme de tsume verificate de un solver și SGF.
 
@@ -30,7 +32,7 @@ Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv 
 - **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
 - **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
 - **Interfață:** tastatură completă (săgeți + Enter, P = pas, U = anulează), mod „confirmă mutarea” (implicit pe ecran tactil), zoom 1×/1,6×/2,2× pe mobil, 390 px fără scroll orizontal; anulare doar contra AI sau cu confirmare; fără sunete.
-- **Interfață în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi; maghiara acoperă doar textele noi și elementele de bază, restul cade pe engleză) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
+- **Interfață în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE/HU se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
 - **Aleatoriu:** `crypto.getRandomValues` cu rejection sampling (culoarea aleatoare, seed-urile AI); opțiune „Seed” pentru partide reproductibile.
 - **Accesibilitate:** aria-live, focus vizibil, ținte tactile ≥ 44 px (măsurat), contrast ≥ 4,5:1 (măsurat), `prefers-reduced-motion`, `<noscript>`, `lang` dinamic.
 
@@ -124,7 +126,7 @@ Fără cont sau telemetrie; implicit fără nicio cerere de rețea. Doar dacă p
 - Phantom Go este aproximat (AI fără informații despre pietrele tale ascunse; poate încerca puncte ocupate).
 - AI-ul este slab pe 19×19; nu este un jucător de nivel de club.
 - Variantele „doar în atlas” nu sunt implementate.
-- Joc în doi: fără ceas/AI/anulare, fără reluare după reîncărcare; SGF-ul și capturile nu sunt sincronizate separat. Analizorul și simulările din turneu folosesc iterații reduse și sunt aproximative. Maghiara este parțială.
+- Joc în doi: fără ceas/AI/anulare, fără reluare după reîncărcare; SGF-ul și capturile nu sunt sincronizate separat. Analizorul și simulările din turneu folosesc iterații reduse și sunt aproximative.
 
 ## Surse
 
@@ -163,4 +165,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## English summary
 
-Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified; Hungarian partial), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).
+Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).

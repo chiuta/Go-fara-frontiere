@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.2.0 · **Dernière mise à jour :** 2026-10-19
+
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
 Le go (Baduk, Weiqi, Igo) dans un seul fichier HTML hors ligne : goban 5×5–19×19, quatre jeux de règles, adversaire IA (MCTS), 12 variantes jouables, leçons, problèmes de tsumego vérifiés par un solveur, et SGF.
 
@@ -30,7 +32,7 @@ Un atlas (18 fiches : origine, règles, approximations ⚠, sources) et une vér
 - **12 problèmes de tsumego**, chacun avec une solution confirmée par un solveur en force brute (voir « Ce que garantit le solveur ») ; retour correct/erroné avec la réponse de la défense ; « Montrer la solution » pas à pas.
 - **SGF :** export (avec coups, handicap, komi, résultat) ; import et relecture avec un analyseur strict (FF[4], ligne principale uniquement, limites : 2 Mo, 30 000 nœuds, profondeur 256 ; rien n'est exécuté) ; « Continuer la partie d'ici ».
 - **Interface :** clavier complet (flèches + Entrée, P = passer, U = annuler), mode « confirmer le coup » (par défaut sur écran tactile), zoom 1×/1,6×/2,2× sur mobile, 390 px sans défilement horizontal ; annulation seulement contre l'IA ou avec confirmation ; sans sons.
-- **Interface en 8 langues** (RO/EN/FR/IT/ES/PT/DE/HU ; FR/IT/ES/PT/DE/HU sont traduites automatiquement, non vérifiées par des locuteurs natifs ; le hongrois ne couvre que les nouveaux textes et les éléments de base, le reste retombe sur l'anglais) avec détection automatique ; textes longs (atlas, leçons, « À propos ») : RO + EN ; en FR/IT/ES/PT/DE, l'anglais est affiché, avec la note « texte en anglais ». La parité des clés est vérifiée par script.
+- **Interface en 8 langues** (RO/EN/FR/IT/ES/PT/DE/HU ; FR/IT/ES/PT/DE/HU sont traduites automatiquement, non vérifiées par des locuteurs natifs) avec détection automatique ; textes longs (atlas, leçons, « À propos ») : RO + EN ; en FR/IT/ES/PT/DE/HU, l'anglais est affiché, avec la note « texte en anglais ». La parité des clés est vérifiée par script.
 - **Aléatoire :** `crypto.getRandomValues` avec échantillonnage par rejet (couleur aléatoire, graines de l'IA) ; option « Graine » pour des parties reproductibles.
 - **Accessibilité :** aria-live, focus visible, cibles tactiles ≥ 44 px (mesuré), contraste ≥ 4,5:1 (mesuré), `prefers-reduced-motion`, `<noscript>`, `lang` dynamique.
 
@@ -124,7 +126,7 @@ Sans compte ni télémétrie ; par défaut, aucune requête réseau. Ce n'est qu
 - Phantom Go est approximé (l'IA n'a aucune information sur vos pierres cachées ; elle peut essayer des points occupés).
 - L'IA est faible sur 19×19 ; ce n'est pas un joueur de niveau club.
 - Les variantes « seulement dans l'atlas » ne sont pas implémentées.
-- Partie à deux : sans pendule/IA/annulation, sans reprise après rechargement ; le SGF et les captures ne sont pas synchronisés séparément. L'analyseur et les simulations du tournoi utilisent des itérations réduites et sont approximatifs. Le hongrois est partiel.
+- Partie à deux : sans pendule/IA/annulation, sans reprise après rechargement ; le SGF et les captures ne sont pas synchronisés séparément. L'analyseur et les simulations du tournoi utilisent des itérations réduites et sont approximatifs.
 
 ## Sources
 
@@ -163,4 +165,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## Résumé
 
-Go hors ligne en un seul fichier (Baduk/Weiqi/Igo) : 5×5–19×19, règles japonaises/chinoises/AGA/Tromp–Taylor (approximations ⚠ documentées), handicap 2–9, IA MCTS (5 niveaux, Web Worker), deux joueurs, Rengo 2 contre 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, pendule byo-yomi, 6 leçons interactives, 12 problèmes de tsumego confirmés chacun par un solveur en force brute, import/export SGF avec analyseur strict. Interface en 8 langues (6 traduites automatiquement, non vérifiées ; hongrois partiel), textes longs RO+EN. Nouveautés de la 1.1.0 : partie à deux via WebRTC avec signalisation manuelle/QR (sans serveur, lockstep), analyseur MCTS local à graine fixe et revue de partie, défi du jour fondé sur la date, explications « pourquoi je ne peux pas jouer ? », jeu au clavier avec annonces vocales, tournoi Elo local. Moteur testé contre une référence indépendante par flood-fill sur 100 000 positions aléatoires, 500 parties IA contre IA sur 9×9 et 100 sur 13×13 sans coup illégal. Sans réseau, sans télémétrie. Licence : MIT (voir LICENSE).
+Go hors ligne en un seul fichier (Baduk/Weiqi/Igo) : 5×5–19×19, règles japonaises/chinoises/AGA/Tromp–Taylor (approximations ⚠ documentées), handicap 2–9, IA MCTS (5 niveaux, Web Worker), deux joueurs, Rengo 2 contre 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, pendule byo-yomi, 6 leçons interactives, 12 problèmes de tsumego confirmés chacun par un solveur en force brute, import/export SGF avec analyseur strict. Interface en 8 langues (6 traduites automatiquement, non vérifiées ), textes longs RO+EN. Nouveautés de la 1.1.0 : partie à deux via WebRTC avec signalisation manuelle/QR (sans serveur, lockstep), analyseur MCTS local à graine fixe et revue de partie, défi du jour fondé sur la date, explications « pourquoi je ne peux pas jouer ? », jeu au clavier avec annonces vocales, tournoi Elo local. Moteur testé contre une référence indépendante par flood-fill sur 100 000 positions aléatoires, 500 parties IA contre IA sur 9×9 et 100 sur 13×13 sans coup illégal. Sans réseau, sans télémétrie. Licence : MIT (voir LICENSE).
