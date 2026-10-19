@@ -13,9 +13,12 @@
     "Web Crypto",
     "Worker"
   ],
-  "storageKeys": [],
-  "sizeBytes": 681742,
-  "sha256": "fe147d4ef4cdff79bb86b14a44d274ac752c4f3975757031816da3a68449c26c",
+  "storageKeys": [
+    "gff.prefs.v1",
+    "gff.save.v1"
+  ],
+  "sizeBytes": 682406,
+  "sha256": "2ca7b10bff045b7167aa97e3651fc22ce7996b24059d9507d8b09c150e31fe97",
   "csp": {
     "present": true,
     "directives": {
@@ -58,7 +61,7 @@
     ]
   },
   "kit": {
-    "version": "1.0.0",
+    "version": "1.1.1",
     "modules": [
       "core",
       "label",
