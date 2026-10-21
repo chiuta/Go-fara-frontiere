@@ -32,7 +32,7 @@ Ein Atlas (18 Datenblätter: Ursprung, Regeln, Näherungen ⚠, Quellen) und ein
 - **12 Tsumego-Aufgaben**, jede mit einer von einem Brute-Force-Solver bestätigten Lösung (siehe „Was der Solver garantiert“); Rückmeldung richtig/falsch mit der Antwort der Verteidigung; „Lösung zeigen“ Schritt für Schritt.
 - **SGF:** Export (mit Zügen, Vorgabe, Komi, Ergebnis); Import und Wiedergabe mit strengem Parser (FF[4], nur Hauptvariante, Grenzen: 2 MB, 30.000 Knoten, Tiefe 256; nichts wird ausgeführt); „Spiel ab hier fortsetzen“.
 - **Oberfläche:** vollständige Tastaturbedienung (Pfeile + Eingabe, P = Pass, U = Zurücknehmen), Modus „Zug bestätigen“ (auf Touchscreens Standard), Zoom 1×/1,6×/2,2× auf dem Handy, 390 px ohne horizontales Scrollen; Zurücknehmen nur gegen die KI oder mit Bestätigung; keine Töne.
-- **Oberfläche in 8 Sprachen** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sind maschinell übersetzt, nicht von Muttersprachlern geprüft) mit automatischer Erkennung; lange Texte (Atlas, Lektionen, „Über“): RO + EN; in FR/IT/ES/PT/DE/HU wird Englisch angezeigt, mit dem Hinweis „Text auf Englisch“. Die Schlüsselparität wird per Skript geprüft.
+- **Oberfläche und Inhalt in 8 Sprachen** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sind maschinell übersetzt, nicht von Muttersprachlern geprüft) mit automatischer Erkennung; auch die langen Texte (Atlas, 6 interaktive Lektionen, Namen der Tsume-Aufgaben, „Über“, Komi-Hinweis) sind in alle Sprachen übersetzt. Unverändert bleiben: das Feld „Quellen“ der Atlaskarten (Zitate, Eigennamen) und der Künstlername „Ecoul Stringurilor“. Die Schlüsselparität wird per Skript geprüft. Die Go-Terminologie (z. B. hu „felület“ für Flächenwertung) sollte von einem muttersprachlichen Spieler geprüft werden.
 - **Zufall:** `crypto.getRandomValues` mit Rejection Sampling (zufällige Farbe, KI-Seeds); Option „Seed“ für reproduzierbare Partien.
 - **Barrierefreiheit:** aria-live, sichtbarer Fokus, Touch-Ziele ≥ 44 px (gemessen), Kontrast ≥ 4,5:1 (gemessen), `prefers-reduced-motion`, `<noscript>`, dynamisches `lang`.
 
@@ -138,6 +138,9 @@ Laden Sie `index.html` herunter und öffnen Sie sie im Browser; sie funktioniert
 
 ## Verlauf / Changelog
 
+### 1.2.1 — 2026-10-19
+- Alle langen Texte („Über“, 6 Lektionen, 12 Tsume-Namen, Stufentexte, Komi-Hinweis, die Atlaskarten) sind nach fr, it, es, pt, de, hu übersetzt; der Hinweis „Text auf Englisch“ erscheint nicht mehr. Maschinelle Übersetzungen, nicht von Muttersprachlern geprüft.
+
 ### 14. Oktober 2026 — Version 1.1.0
 - Zweispielerpartie über FFF.p2p (Lockstep), lokaler Analysator, Tagesaufgabe, „Warum kann ich nicht ziehen?“, Tastaturspiel mit Audioansagen, lokales Elo-Turnier; ungarische Sprache (teilweise); FFF-Kit (`core,label,bundle,qr,p2p,tts`); Tests `tests/fff-r8.test.mjs`. Keine Regelregressionen (Spiel-Engine unverändert).
 
@@ -165,4 +168,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## Zusammenfassung
 
-Offline-Go in einer Datei (Baduk/Weiqi/Igo): 5×5–19×19, japanische/chinesische/AGA-/Tromp–Taylor-Regeln (⚠ Näherungen dokumentiert), Vorgabe 2–9, MCTS-KI (5 Stufen, Web Worker), Zweispieler, Rengo 2 gegen 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, Byo-yomi-Uhr, 6 interaktive Lektionen, 12 Tsumego-Aufgaben, jede von einem Brute-Force-Solver bestätigt, SGF-Import/-Export mit strengem Parser. Oberfläche in 8 Sprachen (6 maschinell übersetzt, ungeprüft), lange Texte RO+EN. Neu in 1.1.0: Zweispielerpartie über WebRTC mit manueller/QR-Signalisierung (ohne Server, Lockstep), lokaler MCTS-Analysator mit festem Seed und Partieauswertung, datumsbasierte Tagesaufgabe, Erklärungen „Warum kann ich nicht ziehen?“, Tastaturspiel mit gesprochenen Ansagen, lokales Elo-Turnier. Engine gegen eine unabhängige Flood-Fill-Referenz an 100.000 Zufallsstellungen getestet, 500 KI-gegen-KI-Partien auf 9×9 und 100 auf 13×13 ohne regelwidrige Züge. Kein Netzwerk, keine Telemetrie. Lizenz: MIT (siehe LICENSE).
+Offline-Go in einer Datei (Baduk/Weiqi/Igo): 5×5–19×19, japanische/chinesische/AGA-/Tromp–Taylor-Regeln (⚠ Näherungen dokumentiert), Vorgabe 2–9, MCTS-KI (5 Stufen, Web Worker), Zweispieler, Rengo 2 gegen 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, Byo-yomi-Uhr, 6 interaktive Lektionen, 12 Tsumego-Aufgaben, jede von einem Brute-Force-Solver bestätigt, SGF-Import/-Export mit strengem Parser. Oberfläche in 8 Sprachen (6 maschinell übersetzt, ungeprüft), lange Texte ebenfalls übersetzt. Neu in 1.1.0: Zweispielerpartie über WebRTC mit manueller/QR-Signalisierung (ohne Server, Lockstep), lokaler MCTS-Analysator mit festem Seed und Partieauswertung, datumsbasierte Tagesaufgabe, Erklärungen „Warum kann ich nicht ziehen?“, Tastaturspiel mit gesprochenen Ansagen, lokales Elo-Turnier. Engine gegen eine unabhängige Flood-Fill-Referenz an 100.000 Zufallsstellungen getestet, 500 KI-gegen-KI-Partien auf 9×9 und 100 auf 13×13 ohne regelwidrige Züge. Kein Netzwerk, keine Telemetrie. Lizenz: MIT (siehe LICENSE).

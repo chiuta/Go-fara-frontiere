@@ -32,7 +32,7 @@ Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv 
 - **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
 - **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
 - **Interfață:** tastatură completă (săgeți + Enter, P = pas, U = anulează), mod „confirmă mutarea” (implicit pe ecran tactil), zoom 1×/1,6×/2,2× pe mobil, 390 px fără scroll orizontal; anulare doar contra AI sau cu confirmare; fără sunete.
-- **Interfață în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi) cu autodetecție; textele lungi (atlas, lecții, „Despre”): RO + EN; în FR/IT/ES/PT/DE/HU se afișează engleza, cu nota „text în engleză”. Paritatea cheilor este verificată cu script.
+- **Interfață și conținut în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi) cu autodetectare; textele lungi (atlasul, cele 6 lecții interactive, numele problemelor tsume, „Despre”, nota despre komi) sunt traduse și ele în toate limbile. Rămân neschimbate: câmpul „surse” al fișelor din atlas (citări, nume proprii) și numele artistic „Ecoul Stringurilor”. Paritatea cheilor este verificată cu un script. Terminologia de Go (de ex. hu „felület” pentru area scoring) merită revizuită de un jucător nativ.
 - **Aleatoriu:** `crypto.getRandomValues` cu rejection sampling (culoarea aleatoare, seed-urile AI); opțiune „Seed” pentru partide reproductibile.
 - **Accesibilitate:** aria-live, focus vizibil, ținte tactile ≥ 44 px (măsurat), contrast ≥ 4,5:1 (măsurat), `prefers-reduced-motion`, `<noscript>`, `lang` dinamic.
 
@@ -138,6 +138,9 @@ Descărcați `index.html` și deschideți-l în browser; funcționează fără i
 
 ## Istoric / Changelog
 
+### 1.2.1 — 2026-10-19
+- Toate textele lungi („Despre”, 6 lecții, 12 nume de probleme tsume, textele de nivel, nota despre komi, fișele atlasului) sunt traduse în fr, it, es, pt, de, hu; nota „text în engleză” nu mai apare. Traduceri automate, neverificate de vorbitori nativi.
+
 ### 14 octombrie 2026 — versiunea 1.1.0
 - Joc în doi prin FFF.p2p (lockstep), analizor local, provocarea zilei, „de ce nu pot muta?”, joc de la tastatură cu anunțuri audio, turneu Elo local; limba maghiară (parțială); kit FFF (`core,label,bundle,qr,p2p,tts`); teste `tests/fff-r8.test.mjs`. Fără regresii de reguli (motorul de joc nemodificat).
 
@@ -165,4 +168,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## Rezumat
 
-Go (Baduk/Weiqi/Igo) offline într-un singur fișier: 5×5–19×19, reguli japoneze/chineze/AGA/Tromp–Taylor (⚠ aproximări documentate), handicap 2–9, AI MCTS (5 niveluri, Web Worker), doi jucători, Rengo 2 contra 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, ceas byo-yomi, 6 lecții interactive, 12 probleme tsume, fiecare confirmată de un solver prin forță brută, import/export SGF cu parser strict. Interfață în 8 limbi (6 traduse automat, neverificate), texte lungi RO+EN. Noutăți în 1.1.0: joc în doi prin WebRTC cu semnalizare manuală/QR (fără server, lockstep), analizor MCTS local cu sămânță fixă și revizuirea partidelor, provocare zilnică pe bază de dată, explicații „de ce nu pot muta?”, joc cu tastatura cu anunțuri vocale, turneu Elo local. Motorul a fost testat față de o referință independentă flood-fill pe 100.000 de poziții aleatorii, 500 de partide AI contra AI pe 9×9 și 100 pe 13×13, fără mutări ilegale. Fără rețea, fără telemetrie. Licență: MIT (vezi LICENSE).
+Go (Baduk/Weiqi/Igo) offline într-un singur fișier: 5×5–19×19, reguli japoneze/chineze/AGA/Tromp–Taylor (⚠ aproximări documentate), handicap 2–9, AI MCTS (5 niveluri, Web Worker), doi jucători, Rengo 2 contra 2, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, ceas byo-yomi, 6 lecții interactive, 12 probleme tsume, fiecare confirmată de un solver prin forță brută, import/export SGF cu parser strict. Interfață în 8 limbi (6 traduse automat, neverificate), texte lungi traduse și ele. Noutăți în 1.1.0: joc în doi prin WebRTC cu semnalizare manuală/QR (fără server, lockstep), analizor MCTS local cu sămânță fixă și revizuirea partidelor, provocare zilnică pe bază de dată, explicații „de ce nu pot muta?”, joc cu tastatura cu anunțuri vocale, turneu Elo local. Motorul a fost testat față de o referință independentă flood-fill pe 100.000 de poziții aleatorii, 500 de partide AI contra AI pe 9×9 și 100 pe 13×13, fără mutări ilegale. Fără rețea, fără telemetrie. Licență: MIT (vezi LICENSE).

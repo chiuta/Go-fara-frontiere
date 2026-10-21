@@ -32,7 +32,7 @@ Egy atlasz (18 adatlap: eredet, szabályok, közelítések ⚠, források) és e
 - **12 tsumego-feladat**, mindegyikhez nyers erős megoldóval megerősített megoldás tartozik (lásd „Mit garantál a megoldó”); helyes/hibás visszajelzés a védekezés válaszával; „A megoldás mutatása” lépésről lépésre.
 - **SGF:** export (lépésekkel, előnyadással, komival, eredménnyel); import és visszajátszás szigorú elemzővel (FF[4], csak a főág, korlátok: 2 MB, 30 000 csomópont, 256 mélység; semmi nem hajtódik végre); „A játék folytatása innen”.
 - **Felület:** teljes billentyűzetes vezérlés (nyilak + Enter, P = passz, U = visszavonás), „lépés megerősítése” mód (érintőképernyőn alapértelmezett), 1×/1,6×/2,2×-es nagyítás mobilon, 390 px vízszintes görgetés nélkül; visszavonás csak MI ellen vagy megerősítéssel; hangok nélkül.
-- **Felület 8 nyelven** (RO/EN/FR/IT/ES/PT/DE/HU; az FR/IT/ES/PT/DE/HU gépi fordítás, anyanyelvi beszélők nem ellenőrizték) automatikus felismeréssel; hosszú szövegek (atlasz, leckék, „Névjegy”): RO + EN; FR/IT/ES/PT/DE/HU nyelven az angol jelenik meg, a „szöveg angolul” megjegyzéssel. A kulcsok paritását szkript ellenőrzi.
+- **Felület és tartalom 8 nyelven** (RO/EN/FR/IT/ES/PT/DE/HU; az FR/IT/ES/PT/DE/HU gépi fordítás, anyanyelvi beszélők nem ellenőrizték) automatikus felismeréssel; a hosszú szövegek (az atlasz, a 6 interaktív lecke, a tsume-feladatok nevei, a „Névjegy”, a komi-megjegyzés) szintén le vannak fordítva minden nyelvre. Változatlanul marad: az atlaszlapok „források” mezője (hivatkozások, tulajdonnevek) és az „Ecoul Stringurilor” művésznév. A kulcsok paritását szkript ellenőrzi. A go-terminológiát (pl. hu „felület” a területpontozásra) érdemes anyanyelvi játékossal átnézetni.
 - **Véletlenszerűség:** `crypto.getRandomValues` elutasításos mintavételezéssel (véletlen szín, az MI seedjei); „Seed” opció reprodukálható játszmákhoz.
 - **Hozzáférhetőség:** aria-live, látható fókusz, érintési célpontok ≥ 44 px (mérve), kontraszt ≥ 4,5:1 (mérve), `prefers-reduced-motion`, `<noscript>`, dinamikus `lang`.
 
@@ -138,6 +138,9 @@ Töltsd le az `index.html` fájlt, és nyisd meg a böngészőben; internet nél
 
 ## Előzmények / Changelog
 
+### 1.2.1 — 2026-10-19
+- Az összes hosszú szöveg („Névjegy”, 6 lecke, 12 tsume-név, szintszövegek, komi-megjegyzés, az atlaszlapok) le van fordítva fr, it, es, pt, de, hu nyelvre; a „szöveg angolul” megjegyzés már nem jelenik meg. Gépi fordítások, anyanyelvi beszélők nem ellenőrizték.
+
 ### 2026. október 14. — 1.1.0 verzió
 - Kétszemélyes játék az FFF.p2p-n keresztül (lockstep), helyi elemző, a nap kihívása, „miért nem léphetek?”, billentyűzetes játék hangbejelentésekkel, helyi Elo-torna; magyar nyelv (részleges); FFF kit (`core,label,bundle,qr,p2p,tts`); tesztek `tests/fff-r8.test.mjs`. Szabályregresszió nélkül (a játékmotor változatlan).
 
@@ -165,4 +168,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## Összefoglaló
 
-Egyetlen fájlos offline Go (Baduk/Weiqi/Igo): 5×5–19×19, japán/kínai/AGA/Tromp–Taylor szabályok (⚠ közelítések dokumentálva), előnyadás 2–9, MCTS MI (5 szint, Web Worker), kétszemélyes játék, 2:2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi óra, 6 interaktív lecke, 12 tsumego-feladat, mindegyiket nyers erős megoldó erősítette meg, SGF-import/-export szigorú elemzővel. Felület 8 nyelven (6 gépi fordítású, ellenőrizetlen), hosszú szövegek RO+EN. Újdonságok az 1.1.0-ban: kétszemélyes játék WebRTC-n keresztül kézi/QR-jelzéssel (szerver nélkül, lockstep), helyi, rögzített seedű MCTS-elemző és játszma-áttekintés, dátum alapú napi kihívás, „miért nem léphetek?” magyarázatok, billentyűzetes játék kimondott bejelentésekkel, helyi Elo-torna. A motort egy független flood-fill referenciával teszteltük 100 000 véletlen pozíción, 500 MI–MI játszmán 9×9-en és 100-on 13×13-on szabálytalan lépés nélkül. Hálózat nélkül, telemetria nélkül. Licenc: MIT (lásd LICENSE).
+Egyetlen fájlos offline Go (Baduk/Weiqi/Igo): 5×5–19×19, japán/kínai/AGA/Tromp–Taylor szabályok (⚠ közelítések dokumentálva), előnyadás 2–9, MCTS MI (5 szint, Web Worker), kétszemélyes játék, 2:2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi óra, 6 interaktív lecke, 12 tsumego-feladat, mindegyiket nyers erős megoldó erősítette meg, SGF-import/-export szigorú elemzővel. Felület 8 nyelven (6 gépi fordítású, ellenőrizetlen), a hosszú szövegek is lefordítva. Újdonságok az 1.1.0-ban: kétszemélyes játék WebRTC-n keresztül kézi/QR-jelzéssel (szerver nélkül, lockstep), helyi, rögzített seedű MCTS-elemző és játszma-áttekintés, dátum alapú napi kihívás, „miért nem léphetek?” magyarázatok, billentyűzetes játék kimondott bejelentésekkel, helyi Elo-torna. A motort egy független flood-fill referenciával teszteltük 100 000 véletlen pozíción, 500 MI–MI játszmán 9×9-en és 100-on 13×13-on szabálytalan lépés nélkül. Hálózat nélkül, telemetria nélkül. Licenc: MIT (lásd LICENSE).

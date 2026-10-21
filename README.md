@@ -32,7 +32,7 @@ An atlas (18 sheets: origin, rules, approximations ⚠, sources) and an actual g
 - **12 tsume-go problems**, each with a solution confirmed by a brute-force solver (see "What the solver guarantees"); correct/wrong feedback with the defender's answer; "Show the solution" step by step.
 - **SGF:** export (with moves, handicap, komi, result); import and replay with a strict parser (FF[4], main line only, limits: 2 MB, 30,000 nodes, depth 256; nothing is executed); "Continue the game from here".
 - **Interface:** full keyboard (arrows + Enter, P = pass, U = undo), "confirm move" mode (default on touch screens), zoom 1×/1.6×/2.2× on mobile, 390 px with no horizontal scroll; undo only against the AI or with confirmation; no sounds.
-- **Interface in 8 languages** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU are machine-translated, not verified by native speakers) with autodetection; long texts (atlas, lessons, "About"): RO + EN; in FR/IT/ES/PT/DE/HU English is shown, with the note "text in English". Key parity is checked by a script.
+- **Interface and content in 8 languages** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU are machine-translated, not verified by native speakers) with autodetection; the long texts (atlas, 6 interactive lessons, tsume problem names, "About", komi note) are translated into all the languages too. Left as they are: the "sources" field of the atlas sheets (citations, proper names) and the artistic name "Ecoul Stringurilor". Key parity is checked by a script. The Go terminology (e.g. hu "felület" for area scoring) deserves a review by a native player.
 - **Randomness:** `crypto.getRandomValues` with rejection sampling (random colour, AI seeds); a "Seed" option for reproducible games.
 - **Accessibility:** aria-live, visible focus, touch targets ≥ 44 px (measured), contrast ≥ 4.5:1 (measured), `prefers-reduced-motion`, `<noscript>`, dynamic `lang`.
 
@@ -138,6 +138,9 @@ Download `index.html` and open it in a browser; it works without internet.
 
 ## History / Changelog
 
+### 1.2.1 — 2026-10-19
+- All the long texts (About, 6 lessons, 12 tsume names, level texts, komi note, the atlas sheets) are translated into fr, it, es, pt, de, hu; the "text in English" note no longer appears. Machine translations, not verified by native speakers.
+
 ### 14 October 2026 — version 1.1.0
 - Two-player game via FFF.p2p (lockstep), local analyzer, daily challenge, "why can't I move?", keyboard play with audio announcements, local Elo tournament; Hungarian language (partial); FFF kit (`core,label,bundle,qr,p2p,tts`); tests `tests/fff-r8.test.mjs`. No rules regressions (the game engine unchanged).
 
@@ -165,4 +168,4 @@ Alexio — Alexandru-Ionuț Chiuță · alexio@trom.tf
 
 ## Summary
 
-Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified), long texts RO+EN. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).
+Single-file offline Go (Baduk/Weiqi/Igo): 5×5–19×19, Japanese/Chinese/AGA/Tromp–Taylor rules (⚠ approximations documented), handicap 2–9, MCTS AI (5 levels, Web Worker), two-player, 2v2 Rengo, Atari-Go/Ponnuki-Go, NoGo, Phantom Go ⚠, byo-yomi clock, 6 interactive lessons, 12 tsume problems each confirmed by a brute-force solver, SGF import/export with a strict parser. UI in 8 languages (6 machine-translated, unverified), long texts translated too. New in 1.1.0: two-player over WebRTC with manual/QR signalling (no server, lockstep), local fixed-seed MCTS analyzer and game review, date-seeded daily challenge, "why can't I move?" explanations, keyboard play with spoken announcements, local Elo tournament. Engine tested against an independent flood-fill reference on 100,000 random positions, 500 AI-vs-AI games on 9×9 and 100 on 13×13 without illegal moves. No network, no telemetry. License: MIT (see LICENSE).
