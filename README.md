@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.3 · **Last updated:** 2026-10-22
+**Version:** 1.2.4 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Download `index.html` and open it in a browser; it works without internet.
 
 ## History / Changelog
+
+### 1.2.4 — 2026-10-22
+
+replacing a game in progress (from the atlas, from an SGF record, or when starting an online game) asks for confirmation in the kit’s inline dialog (translated into 8 languages) instead of the blocking `window.confirm()`; visible keyboard focus; checkbox targets of at least 24 px; test `tests/r9-confirm.test.mjs`.
 
 ### 1.2.3 — 2026-10-22
 - The “Skip” link and the board types in the variants atlas (toroidal, hexagonal) are translated; the NoGo source line no longer mixes Romanian and English; the name and description in the transparency panel (fff-info) and in the meta description now follow the interface language and update when it changes.

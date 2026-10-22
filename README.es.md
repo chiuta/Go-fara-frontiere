@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.3 · **Última actualización:** 2026-10-22
+**Versión:** 1.2.4 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descarga `index.html` y ábrelo en el navegador; funciona sin internet.
 
 ## Historial / Changelog
+
+### 1.2.4 — 2026-10-22
+
+reemplazar una partida en curso (desde el atlas, desde un registro SGF o al iniciar una partida en línea) pide confirmación en el diálogo integrado del kit (traducido a 8 idiomas) en lugar del `window.confirm()` bloqueante; foco de teclado visible; casillas de al menos 24 px; prueba `tests/r9-confirm.test.mjs`.
 
 ### 1.2.3 — 2026-10-22
 - El enlace «Skip» y los tipos de tablero del atlas de variantes (toroidal, hexagonal) están traducidos; la línea de fuentes de NoGo ya no mezcla rumano e inglés; el nombre y la descripción del panel de transparencia (fff-info) y de la meta description siguen ahora el idioma de la interfaz y se actualizan al cambiarlo.

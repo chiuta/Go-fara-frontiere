@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.3 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.2.4 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Töltsd le az `index.html` fájlt, és nyisd meg a böngészőben; internet nélkül is működik.
 
 ## Előzmények / Changelog
+
+### 1.2.4 — 2026-10-22
+
+egy folyamatban lévő játszma cseréje (az atlaszból, SGF-felvételből vagy online játék indításakor) a kit soron belüli párbeszédablakában (8 nyelvre lefordítva) kér megerősítést a blokkoló `window.confirm()` helyett; látható billentyűzetfókusz; legalább 24 px-es jelölőnégyzetek; teszt: `tests/r9-confirm.test.mjs`.
 
 ### 1.2.3 — 2026-10-22
 - A „Skip” hivatkozás és a változatatlasz táblatípusai (toroidális, hatszögletű) le vannak fordítva; a NoGo forrássora már nem keveri a románt és az angolt; az átláthatósági panel (fff-info) és a meta description neve és leírása mostantól követi a felület nyelvét, és nyelvváltáskor frissül.

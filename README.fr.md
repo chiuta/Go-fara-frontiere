@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.3 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.2.4 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Téléchargez `index.html` et ouvrez-le dans un navigateur ; il fonctionne sans internet.
 
 ## Historique / Changelog
+
+### 1.2.4 — 2026-10-22
+
+le remplacement d’une partie en cours (depuis l’atlas, depuis un enregistrement SGF ou au lancement d’une partie en ligne) demande confirmation dans la boîte de dialogue intégrée du kit (traduite en 8 langues) au lieu du `window.confirm()` bloquant ; focus clavier visible ; cases à cocher d’au moins 24 px ; test `tests/r9-confirm.test.mjs`.
 
 ### 1.2.3 — 2026-10-22
 - Le lien « Skip » et les types de plateau de l'atlas des variantes (torique, hexagonal) sont traduits ; la ligne de sources de NoGo ne mélange plus roumain et anglais ; le nom et la description du panneau de transparence (fff-info) et de la méta-description suivent désormais la langue de l'interface et se mettent à jour quand elle change.

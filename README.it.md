@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.2.3 · **Ultimo aggiornamento:** 2026-10-22
+**Versione:** 1.2.4 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Scarica `index.html` e aprilo in un browser; funziona senza internet.
 
 ## Cronologia / Changelog
+
+### 1.2.4 — 2026-10-22
+
+la sostituzione di una partita in corso (dall’atlante, da una registrazione SGF o all’avvio di una partita online) chiede conferma nella finestra in linea del kit (tradotta in 8 lingue) invece del `window.confirm()` bloccante; focus da tastiera visibile; caselle di controllo di almeno 24 px; test `tests/r9-confirm.test.mjs`.
 
 ### 1.2.3 — 2026-10-22
 - Il link «Skip» e i tipi di tavola dell'atlante delle varianti (toroidale, esagonale) sono tradotti; la riga delle fonti di NoGo non mescola più rumeno e inglese; nome e descrizione nel pannello di trasparenza (fff-info) e nella meta description seguono ora la lingua dell'interfaccia e si aggiornano al cambio.
