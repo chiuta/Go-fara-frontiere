@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.2.2 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.2.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Laden Sie `index.html` herunter und öffnen Sie sie im Browser; sie funktioniert ohne Internet.
 
 ## Verlauf / Changelog
+
+### 1.2.3 — 2026-10-22
+- Der Link „Skip“ und die Brettarten im Varianten-Atlas (toroidal, hexagonal) sind übersetzt; die Quellenzeile zu NoGo mischt nicht mehr Rumänisch und Englisch; Name und Beschreibung im Transparenz-Panel (fff-info) und in der Meta-Description folgen jetzt der Oberflächensprache und werden bei einem Wechsel aktualisiert.
 
 ### 1.2.2 — 2026-10-22
 - Übersetzungskorrektur: Die Quellenangabe zu Rengo enthält keinen rumänischen Text mehr.

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.2 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.2.3 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
 
 ## Istoric / Changelog
+
+### 1.2.3 — 2026-10-22
+- Linkul „Skip” și tipurile de tablă din atlasul de variante (toroidală, hexagonală) sunt traduse; linia de surse de la NoGo nu mai amestecă româna cu engleza; numele și descrierea din panoul de transparență (fff-info) și din meta description urmează acum limba interfeței și se actualizează la schimbarea ei.
 
 ### 1.2.2 — 2026-10-22
 - Corecție de traducere: referința sursă de la Rengo nu mai conține text în română.
