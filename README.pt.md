@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.7 · **Última atualização:** 2026-10-23
+**Versão:** 1.2.8 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -115,7 +115,7 @@ Executados a partir de `scratchpad/new/games_work/Go-fara-frontiere/` (fora do p
 
 ## Privacidade e rede
 
-Sem conta nem telemetria; por predefinição, nenhum pedido de rede. Só se iniciar explicitamente «Jogo a dois» é aberta uma ligação WebRTC direta ao adversário (sinalização copiada manualmente; STUN público apenas com acordo explícito). CSP rigorosa (`default-src 'none'`, script permitido apenas por hash SHA-256, `worker-src blob:`, sem `connect-src`). `localStorage` (em try/catch) apenas para o idioma, as definições, os problemas resolvidos, as estatísticas locais e a gravação automática de um único jogo por terminar (`gff.save.v1`: as definições, as jogadas, a sua cor e a semente; não para o Phantom Go nem para jogos com relógio; apagada no fim do jogo ou com «Apagar a gravação»). As ligações Buy Me a Coffee do rodapé abrem-se apenas ao clicar (`rel=noopener`).
+Sem conta nem telemetria; por predefinição, nenhum pedido de rede. Só se iniciar explicitamente «Jogo a dois» é aberta uma ligação WebRTC direta ao adversário (sinalização copiada manualmente; STUN público apenas com acordo explícito). CSP rigorosa (`default-src 'none'`, script permitido apenas por hash SHA-256, `worker-src blob:`, sem `connect-src`). `localStorage` (em try/catch) apenas para o idioma, as definições, os problemas resolvidos, as estatísticas locais e a gravação automática de um único jogo por terminar (`go-fara-frontiere.save.v1`: as definições, as jogadas, a sua cor e a semente; não para o Phantom Go nem para jogos com relógio; apagada no fim do jogo ou com «Apagar a gravação»). As ligações Buy Me a Coffee do rodapé abrem-se apenas ao clicar (`rel=noopener`).
 
 ## Limites e avisos
 
@@ -137,6 +137,11 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descarregue `index.html` e abra-o no navegador; funciona sem internet.
 
 ## Histórico / Changelog
+
+### 1.2.8 — 2026-10-23
+
+- Armazenamento: as chaves passam a ter o prefixo da aplicação (`go-fara-frontiere.prefs.v1`, `go-fara-frontiere.save.v1`, `go-fara-frontiere.r8.*`); os dados existentes são migrados automaticamente no arranque a partir das chaves antigas (`gff.prefs.v1`, `gff.save.v1`, `gff_r8_*`) e as cópias `.fff.json` antigas continuam a ser importadas (fff-kit 1.2.0).
+- Diálogos: as caixas nativas `alert`/`confirm`/`prompt` foram substituídas por diálogos `FFF.dialog` acessíveis e traduzidos (teclado, armadilha de foco, Esc), com o mesmo comportamento (fff-kit 1.2.0).
 
 ### 1.2.6 — 2026-10-22
 

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.2.7 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.2.8 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -115,7 +115,7 @@ Exécutés depuis `scratchpad/new/games_work/Go-fara-frontiere/` (hors du paquet
 
 ## Confidentialité et réseau
 
-Sans compte ni télémétrie ; par défaut, aucune requête réseau. Ce n'est que si vous lancez explicitement « Partie à deux » qu'une connexion WebRTC directe s'ouvre vers l'adversaire (signalisation copiée manuellement ; STUN public seulement avec accord explicite). CSP stricte (`default-src 'none'`, script autorisé uniquement par hash SHA-256, `worker-src blob:`, sans `connect-src`). `localStorage` (dans un try/catch) uniquement pour la langue, les réglages, les problèmes résolus, les statistiques locales et la sauvegarde automatique d'une seule partie inachevée (`gff.save.v1` : les réglages, les coups, votre couleur et la graine ; pas pour Phantom Go ni les parties avec pendule ; supprimée à la fin de la partie ou avec « Supprimer la sauvegarde »). Les liens Buy Me a Coffee du pied de page ne s'ouvrent qu'au clic (`rel=noopener`).
+Sans compte ni télémétrie ; par défaut, aucune requête réseau. Ce n'est que si vous lancez explicitement « Partie à deux » qu'une connexion WebRTC directe s'ouvre vers l'adversaire (signalisation copiée manuellement ; STUN public seulement avec accord explicite). CSP stricte (`default-src 'none'`, script autorisé uniquement par hash SHA-256, `worker-src blob:`, sans `connect-src`). `localStorage` (dans un try/catch) uniquement pour la langue, les réglages, les problèmes résolus, les statistiques locales et la sauvegarde automatique d'une seule partie inachevée (`go-fara-frontiere.save.v1` : les réglages, les coups, votre couleur et la graine ; pas pour Phantom Go ni les parties avec pendule ; supprimée à la fin de la partie ou avec « Supprimer la sauvegarde »). Les liens Buy Me a Coffee du pied de page ne s'ouvrent qu'au clic (`rel=noopener`).
 
 ## Limites et avertissements
 
@@ -137,6 +137,11 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Téléchargez `index.html` et ouvrez-le dans un navigateur ; il fonctionne sans internet.
 
 ## Historique / Changelog
+
+### 1.2.8 — 2026-10-23
+
+- Stockage : les clés portent désormais le préfixe de l'application (`go-fara-frontiere.prefs.v1`, `go-fara-frontiere.save.v1`, `go-fara-frontiere.r8.*`) ; les données existantes sont migrées automatiquement au démarrage depuis les anciennes clés (`gff.prefs.v1`, `gff.save.v1`, `gff_r8_*`), et les anciennes sauvegardes `.fff.json` s'importent toujours (fff-kit 1.2.0).
+- Dialogues : les boîtes natives `alert`/`confirm`/`prompt` ont été remplacées par des dialogues `FFF.dialog` accessibles et traduits (clavier, piège de focus, Échap), au comportement identique (fff-kit 1.2.0).
 
 ### 1.2.6 — 2026-10-22
 

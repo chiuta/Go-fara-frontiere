@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.2.7 · **Last updated:** 2026-10-23
+**Version:** 1.2.8 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -115,7 +115,7 @@ Run from `scratchpad/new/games_work/Go-fara-frontiere/` (outside the package):
 
 ## Privacy and network
 
-No account or telemetry; no network requests by default. Only if you explicitly start "Two-player game" is a direct WebRTC connection opened to the opponent (signalling copied manually; public STUN only with explicit consent). Strict CSP (`default-src 'none'`, script allowed only by SHA-256 hash, `worker-src blob:`, no `connect-src`). `localStorage` (in try/catch) only for language, settings, solved problems, local statistics and the autosave of a single unfinished game (`gff.save.v1`: the settings, the moves, your colour and the seed; not for Phantom Go or games with a clock; deleted at the end of the game or with "Delete save"). The Buy Me a Coffee links in the footer open only on click (`rel=noopener`).
+No account or telemetry; no network requests by default. Only if you explicitly start "Two-player game" is a direct WebRTC connection opened to the opponent (signalling copied manually; public STUN only with explicit consent). Strict CSP (`default-src 'none'`, script allowed only by SHA-256 hash, `worker-src blob:`, no `connect-src`). `localStorage` (in try/catch) only for language, settings, solved problems, local statistics and the autosave of a single unfinished game (`go-fara-frontiere.save.v1`: the settings, the moves, your colour and the seed; not for Phantom Go or games with a clock; deleted at the end of the game or with "Delete save"). The Buy Me a Coffee links in the footer open only on click (`rel=noopener`).
 
 ## Limits and warnings
 
@@ -137,6 +137,11 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Download `index.html` and open it in a browser; it works without internet.
 
 ## History / Changelog
+
+### 1.2.8 — 2026-10-23
+
+- Storage: keys now carry the app prefix (`go-fara-frontiere.prefs.v1`, `go-fara-frontiere.save.v1`, `go-fara-frontiere.r8.*`); existing data is migrated automatically at startup from the old key(s) (`gff.prefs.v1`, `gff.save.v1`, `gff_r8_*`), and older `.fff.json` backups still import (fff-kit 1.2.0).
+- Dialogs: the native `alert`/`confirm`/`prompt` boxes were replaced with accessible, translated `FFF.dialog` dialogs (keyboard, focus trap, Escape) with the same behavior (fff-kit 1.2.0).
 
 ### 1.2.6 — 2026-10-22
 

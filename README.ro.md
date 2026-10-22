@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.2.7 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.2.8 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -115,7 +115,7 @@ Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului)
 
 ## Confidențialitate și rețea
 
-Fără cont sau telemetrie; implicit fără nicio cerere de rețea. Doar dacă porniți explicit „Joc în doi” se deschide o conexiune WebRTC directă către adversar (semnalizare copiată manual; STUN public doar cu acord explicit). CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`gff.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Buy Me a Coffee din subsol se deschid doar la clic (`rel=noopener`).
+Fără cont sau telemetrie; implicit fără nicio cerere de rețea. Doar dacă porniți explicit „Joc în doi” se deschide o conexiune WebRTC directă către adversar (semnalizare copiată manual; STUN public doar cu acord explicit). CSP strict (`default-src 'none'`, script permis doar prin hash SHA-256, `worker-src blob:`, fără `connect-src`). `localStorage` (în try/catch) doar pentru limbă, setări, probleme rezolvate, statistici locale și salvarea automată a unei singure partide nefinalizate (`go-fara-frontiere.save.v1`: setările, mutările, culoarea ta și seed-ul; nu pentru Phantom Go sau partide cu ceas; se șterge la sfârșitul partidei sau cu „Șterge salvarea”). Linkurile Buy Me a Coffee din subsol se deschid doar la clic (`rel=noopener`).
 
 ## Limite și avertismente
 
@@ -137,6 +137,11 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descărcați `index.html` și deschideți-l în browser; funcționează fără internet.
 
 ## Istoric / Changelog
+
+### 1.2.8 — 2026-10-23
+
+- Stocare: cheile poartă acum prefixul aplicației (`go-fara-frontiere.prefs.v1`, `go-fara-frontiere.save.v1`, `go-fara-frontiere.r8.*`); datele existente se mută automat la pornire din cheile vechi (`gff.prefs.v1`, `gff.save.v1`, `gff_r8_*`), iar copiile `.fff.json` mai vechi se importă în continuare (fff-kit 1.2.0).
+- Dialoguri: casetele native `alert`/`confirm`/`prompt` au fost înlocuite cu dialoguri `FFF.dialog` accesibile și traduse (tastatură, capcană de focus, Escape), cu același comportament (fff-kit 1.2.0).
 
 ### 1.2.6 — 2026-10-22
 

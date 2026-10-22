@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.7 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.2.8 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -115,7 +115,7 @@ A `scratchpad/new/games_work/Go-fara-frontiere/` könyvtárból futtatva (a csom
 
 ## Adatvédelem és hálózat
 
-Fiók és telemetria nélkül; alapértelmezetten nincs hálózati kérés. Csak ha kifejezetten elindítod a „Kétszemélyes játékot”, nyílik közvetlen WebRTC-kapcsolat az ellenféllel (kézzel másolt jelzéssel; nyilvános STUN csak kifejezett hozzájárulással). Szigorú CSP (`default-src 'none'`, a szkript csak SHA-256-hash útján engedélyezett, `worker-src blob:`, `connect-src` nélkül). `localStorage` (try/catch-ben) csak a nyelvhez, a beállításokhoz, a megoldott feladatokhoz, a helyi statisztikákhoz és egyetlen befejezetlen játszma automatikus mentéséhez (`gff.save.v1`: a beállítások, a lépések, a te színed és a seed; nem Phantom Gohoz vagy órás játszmákhoz; a játszma végén vagy a „Mentés törlése” gombbal törlődik). A láblécben lévő Buy Me a Coffee hivatkozások csak kattintásra nyílnak meg (`rel=noopener`).
+Fiók és telemetria nélkül; alapértelmezetten nincs hálózati kérés. Csak ha kifejezetten elindítod a „Kétszemélyes játékot”, nyílik közvetlen WebRTC-kapcsolat az ellenféllel (kézzel másolt jelzéssel; nyilvános STUN csak kifejezett hozzájárulással). Szigorú CSP (`default-src 'none'`, a szkript csak SHA-256-hash útján engedélyezett, `worker-src blob:`, `connect-src` nélkül). `localStorage` (try/catch-ben) csak a nyelvhez, a beállításokhoz, a megoldott feladatokhoz, a helyi statisztikákhoz és egyetlen befejezetlen játszma automatikus mentéséhez (`go-fara-frontiere.save.v1`: a beállítások, a lépések, a te színed és a seed; nem Phantom Gohoz vagy órás játszmákhoz; a játszma végén vagy a „Mentés törlése” gombbal törlődik). A láblécben lévő Buy Me a Coffee hivatkozások csak kattintásra nyílnak meg (`rel=noopener`).
 
 ## Korlátok és figyelmeztetések
 
@@ -137,6 +137,11 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Töltsd le az `index.html` fájlt, és nyisd meg a böngészőben; internet nélkül is működik.
 
 ## Előzmények / Changelog
+
+### 1.2.8 — 2026-10-23
+
+- Tárolás: a kulcsok mostantól az alkalmazás előtagját viselik (`go-fara-frontiere.prefs.v1`, `go-fara-frontiere.save.v1`, `go-fara-frontiere.r8.*`); a meglévő adatok indításkor automatikusan átkerülnek a régi kulcsokból (`gff.prefs.v1`, `gff.save.v1`, `gff_r8_*`), a régebbi `.fff.json` mentések pedig továbbra is importálhatók (fff-kit 1.2.0).
+- Párbeszédablakok: a natív `alert`/`confirm`/`prompt` ablakokat akadálymentes, lefordított `FFF.dialog` ablakok váltották fel (billentyűzet, fókuszcsapda, Esc), változatlan viselkedéssel (fff-kit 1.2.0).
 
 ### 1.2.6 — 2026-10-22
 
