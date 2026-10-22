@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.2.1 · **Última actualización:** 2026-10-19
+**Versión:** 1.2.2 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descarga `index.html` y ábrelo en el navegador; funciona sin internet.
 
 ## Historial / Changelog
+
+### 1.2.2 — 2026-10-22
+- Corrección de traducción: la referencia de fuente de Rengo ya no contiene texto en rumano.
 
 ### 1.2.1 — 2026-10-19
 - Todos los textos largos («Acerca de», 6 lecciones, 12 nombres de problemas de tsume, textos de nivel, nota sobre el komi, las fichas del atlas) están traducidos a fr, it, es, pt, de, hu; la nota «texto en inglés» ya no aparece. Traducciones automáticas, no verificadas por hablantes nativos.

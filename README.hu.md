@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.1 · **Utolsó frissítés:** 2026-10-19
+**Verzió:** 1.2.2 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,9 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Töltsd le az `index.html` fájlt, és nyisd meg a böngészőben; internet nélkül is működik.
 
 ## Előzmények / Changelog
+
+### 1.2.2 — 2026-10-22
+- Fordítási javítás: a Rengo forráshivatkozása már nem tartalmaz román szöveget.
 
 ### 1.2.1 — 2026-10-19
 - Az összes hosszú szöveg („Névjegy”, 6 lecke, 12 tsume-név, szintszövegek, komi-megjegyzés, az atlaszlapok) le van fordítva fr, it, es, pt, de, hu nyelvre; a „szöveg angolul” megjegyzés már nem jelenik meg. Gépi fordítások, anyanyelvi beszélők nem ellenőrizték.
