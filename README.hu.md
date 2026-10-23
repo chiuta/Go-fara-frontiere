@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.2.8 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.2.9 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Töltsd le az `index.html` fájlt, és nyisd meg a böngészőben; internet nélkül is működik.
 
 ## Előzmények / Changelog
+
+### 1.2.9 — 2026-10-23
+
+- Fix: the version shown in the footer was stale (1.2.6); CSP hashes recalculated.
 
 ### 1.2.8 — 2026-10-23
 
