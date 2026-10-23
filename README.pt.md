@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.2.8 · **Última atualização:** 2026-10-23
+**Versão:** 1.2.9 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -137,6 +137,10 @@ Sensei's Library (Japanese rules, Chinese rules, AGA rules, Tromp–Taylor rules
 Descarregue `index.html` e abra-o no navegador; funciona sem internet.
 
 ## Histórico / Changelog
+
+### 1.2.9 — 2026-10-23
+
+- Fix: the version shown in the footer was stale (1.2.6); CSP hashes recalculated.
 
 ### 1.2.8 — 2026-10-23
 
