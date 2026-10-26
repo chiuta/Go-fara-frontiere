@@ -17,8 +17,8 @@
     "go-fara-frontiere.prefs.v1",
     "go-fara-frontiere.save.v1"
   ],
-  "sizeBytes": 885902,
-  "sha256": "bad1ade19bf638baaaa48bcb950bfed2e71c220ee24e62400e86f9fb7b38ae5b",
+  "sizeBytes": 885903,
+  "sha256": "d081554f92b118a16f2f0bafd496c3fedcc4da6760b3d8e666bb6d4169278d23",
   "csp": {
     "present": true,
     "directives": {

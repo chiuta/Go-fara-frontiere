@@ -1,5 +1,9 @@
 // GO FĂRĂ FRONTIERE — teste pentru funcțiile noi (runda 8, C1a): joc în doi P2P (inclusiv marcare), analizor, provocarea zilei,
 // „de ce nu pot muta?”, tastatură + anunțuri, turneu Elo local, limbi (8). Rulare: node tests/fff-r8.test.mjs
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {launch, axeRun, hOverflow, check, summary, kitSmoke, kitLabel} from "./_lib.mjs";
 
 const SPEECH = () => {
@@ -20,8 +24,8 @@ console.log("1. pornire, versiune, kit");
   check("0 erori", st.errs.length === 0, st.errs);
   check("0 cereri de rețea", st.net.length === 0, st.net);
   check("0 violări CSP", (await page.evaluate(() => window.__csp)).length === 0);
-  check("meta application-version 1.2.10", (await page.getAttribute('meta[name="application-version"]', "content")) === "1.2.10");
-  check("#app-version", /v 1\.2\.10 · 2026-10-26/.test(await page.textContent("#app-version")));
+  check(`meta application-version ${__FFF_APP.version}`, (await page.getAttribute('meta[name="application-version"]', "content")) === __FFF_APP.version);
+  check("#app-version", new RegExp(String.raw`v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}`).test(await page.textContent("#app-version")));
   check("lang=ro", (await page.getAttribute("html", "lang")) === "ro");
   check("fără depășire orizontală", (await hOverflow(page)) <= 0);
   check("butonul Masa de joc există pe pagina de pornire", await page.locator("#hubbtn").isVisible());
