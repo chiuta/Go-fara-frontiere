@@ -1,7 +1,7 @@
 // Ajutoare comune pentru testele Playwright (rețea blocată, CSP real, axe opțional).
 // [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
 import {createRequire as __fffCR} from 'node:module';
-const __fffAxe = () => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } };
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
 import {createRequire} from "module";
 import fs from "fs";
 import path from "path";
