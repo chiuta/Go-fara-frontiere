@@ -48,6 +48,11 @@ Toate se deschid din butonul „Masa de joc” (jocuri în doi, analiză, provoc
 - **Turneu Elo local**: dumneavoastră + adversari AI (Elo 500 + 200·nivel), tur-retur, clasament recalculat din rezultate; meciurile între AI se simulează pe 5×5/7×7/9×9 cu iterații reduse (Tromp–Taylor); clasamentul Elo este relativ și orientativ.
 - **Kit FFF** aplicat: `core, label, bundle, qr, p2p, tts` (fereastra de transparență, `app.json`). CSP-ul rămâne `default-src 'none'`; s-au recalculat doar hash-urile scripturilor.
 
+## Funcții noi (2.0.0) — analizor de partidă și handicap recomandat
+
+- **Analizor de partidă în fila SGF**: pentru orice partidă importată (sau „Revizuiește în SGF” după o partidă jucată aici), butonul „Analizează toată partida” evaluează **fiecare** poziție cu MCTS local (iterații fixe după mărimea tablei, sămânță deterministă), desenează șansa de câștig a Negrului și **marchează greșelile mari** după scăderea șansei celui care a mutat: `?!` ≥ 8%, `?` ≥ 15%, `??` ≥ 30%. Fiecare greșeală are buton „Arată”, care duce la poziția dinaintea mutării și desenează mutarea preferată de AI; „Estimează teritoriul aici” colorează teritoriul probabil în poziția curentă; „Exportă SGF comentat” salvează partida cu comentarii `C[…]` la mutările marcate. Estimările sunt orientative (MCTS cu puține iterații, nu o rețea neuronală) și pot varia de la un dispozitiv la altul.
+- **Handicap recomandat din ranguri** (în configurarea partidei, pe 9×9/13×13/19×19): alegi rangul tău și al adversarului (30 kyu … 9 dan); aplicația folosește convenția „diferența de rang = numărul de pietre” (plafon 9; la o treaptă diferență, joc fără handicap cu komi 0,5; cel mai slab joacă Negru) și, la „Aplică”, completează handicapul, komi și culoarea. Convenția variază între federații; recomandarea e un punct de plecare.
+
 ## Variante
 
 | Nume | Jucabil? | ⚠ Aproximări |
