@@ -19,7 +19,7 @@ check("estimarea teritoriului rulează fără erori", st.errs.length === 0, st.e
 console.log("2. probleme tsume existente");
 await page.click("#tab-problems");
 const probs = await page.evaluate(() => TSUME.length);
-check("12 probleme de tsume (cu soluție confirmată de solver)", probs === 12, probs);
+check("18 probleme de tsume (cu soluție confirmată de solver)", probs === 18, probs);
 check("0 erori de pagină/CSP și 0 cereri de rețea", st.errs.length === 0 && st.net.length === 0, [st.errs, st.net]);
 await browser.close();
 summary();

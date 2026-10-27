@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 2.1.0 · **Última atualização:** 2026-10-27
+**Versão:** 2.2.0 · **Última atualização:** 2026-10-27
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -29,7 +29,7 @@ Um atlas (18 fichas: origem, regras, aproximações ⚠, fontes) e um jogo real 
 - **Sugestão** (💡, em jogos com pedras visíveis): a IA local propõe uma jogada para si (pesquisa Monte-Carlo, indicativa), apresentada como jogada a confirmar ou cancelar.
 - **Gravação automática:** um jogo por terminar é guardado localmente após cada jogada; na abertura seguinte, o separador «Jogar» oferece «Continuar o jogo» ou «Apagar a gravação» (verificada por repetição; as gravações corrompidas são rejeitadas).
 - **Lições interativas** (6): pedras, liberdades, captura, ko, dois olhos, seki.
-- **12 problemas de tsumego**, cada um com uma solução confirmada por um solucionador de força bruta (ver «O que garante o solucionador»); resposta certa/errada com a réplica da defesa; «Mostrar a solução» passo a passo.
+- **18 problemas de tsumego**, cada um com uma solução confirmada por um solucionador de força bruta (ver «O que garante o solucionador»); resposta certa/errada com a réplica da defesa; «Mostrar a solução» passo a passo.
 - **SGF:** exportação (com jogadas, handicap, komi, resultado); importação e repetição com um analisador rigoroso (FF[4], apenas a linha principal, limites: 2 MB, 30 000 nós, profundidade 256; nada é executado); «Continuar o jogo a partir daqui».
 - **Interface:** teclado completo (setas + Enter, P = passar, U = anular), modo «confirmar a jogada» (predefinido em ecrã tátil), zoom 1×/1,6×/2,2× no telemóvel, 390 px sem deslocação horizontal; anular apenas contra a IA ou com confirmação; sem sons.
 - **Interface e conteúdo em 8 idiomas** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU são traduções automáticas, não verificadas por falantes nativos) com deteção automática; os textos longos (atlas, 6 lições interativas, nomes dos problemas de tsume, «Sobre», nota sobre o komi) também estão traduzidos para todos os idiomas. Permanecem inalterados: o campo «fontes» das fichas do atlas (citações, nomes próprios) e o nome artístico «Ecoul Stringurilor». A paridade das chaves é verificada por um script. A terminologia do Go (p. ex. hu «felület» para a contagem por área) merece revisão por um jogador nativo.
@@ -42,7 +42,7 @@ Todas se abrem a partir do botão «Mesa de jogo» (jogos a dois, análise, desa
 
 - **Jogo a dois através de FFF.p2p** (WebRTC, sinalização manual por texto ou código QR, sem servidor). O anfitrião é a autoridade; o convidado aplica apenas as jogadas numeradas devolvidas pelo anfitrião (lockstep, com soma de controlo da posição). Jogada, passe, desistência, marcação das pedras mortas e confirmação da pontuação estão sincronizados; o empate/novo jogo propõem-se e aceitam-se. Limites: sem relógio, sem IA, sem anular jogada no jogo online, sem retoma após recarregar a página. O endereço IP é visível para o adversário; um NAT simétrico pode exigir STUN/TURN (STUN público opcional, apenas com acordo explícito na caixa de diálogo).
 - **Analisador local**: estimativa da probabilidade de vitória e da pontuação com MCTS de semente fixa (800/500/250 iterações consoante o tamanho do tabuleiro), logo o mesmo resultado para a mesma posição; «Revisão» do jogo atual com gráfico e as jogadas que alteram a avaliação em ≥ 20 pontos. É uma estimativa estatística, não um motor de nível profissional.
-- **Desafio do dia**: tabuleiro 9×9 com pedras colocadas a partir da data do calendário (a mesma para todos no mesmo dia), mais o problema de tsumego do dia entre os 12 existentes; série de dias consecutivos guardada localmente. Sem rede.
+- **Desafio do dia**: tabuleiro 9×9 com pedras colocadas a partir da data do calendário (a mesma para todos no mesmo dia), mais o problema de tsumego do dia entre os 18 existentes; série de dias consecutivos guardada localmente. Sem rede.
 - **«Porque não posso jogar?»**: qualquer jogada ilegal recebe uma explicação (ponto ocupado, ko com a jogada proibida, superko com o número da jogada, suicídio com o tamanho da cadeia, NoGo, etc.), anunciada também para leitores de ecrã; botão dedicado e tecla `?`.
 - **Teclado e anúncios de áudio**: cursor no tabuleiro com as setas, Enter/Espaço para jogar, `W` (estado), `C` (coordenadas), `L` (última jogada), `S` (pontuação); região aria-live e, opcionalmente, voz (Web Speech, local) através do módulo `tts` do kit.
 - **Torneio Elo local**: o utilizador + adversários de IA (Elo 500 + 200·nível), ida e volta, classificação recalculada a partir dos resultados; os jogos entre IA são simulados em 5×5/7×7/9×9 com iterações reduzidas (Tromp–Taylor); a classificação Elo é relativa e indicativa.
@@ -109,7 +109,7 @@ Executados a partir de `scratchpad/new/games_work/Go-fara-frontiere/` (fora do p
 - Comparação com uma implementação de referência independente (flood-fill de força bruta): 100 000 posições aleatórias em 588 jogos, 602 976 verificações de legalidade, 0 divergências (em `tests/run.js`).
 - `node tests/fuzz.js 9 500` — 500 jogos IA contra IA em 9×9 (52 291 jogadas), cada jogada validada pela referência: 0 jogadas ilegais, 0 invariantes violados. `node tests/fuzz.js 13 100` — 100 jogos em 13×13 (20 839 jogadas): 0 ilegais. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 ilegais.
 - `node tests/vs_random.js 100 100` — o MCTS com 100 iterações vence o jogador aleatório por 100–0 em 9×9 (requisito ≥ 95 %).
-- `node tests/tsume_verify.js` — volta a resolver os 12 problemas: a solução guardada, a profundidade mínima, a estabilidade a D+2, a refutação de cada jogada errada.
+- `node tests/tsume_verify.js` — volta a resolver os 18 problemas: a solução guardada, a profundidade mínima, a estabilidade a D+2, a refutação de cada jogada errada.
 - `node tests/i18n-parity.js` — 254 chaves × 7 idiomas, marcadores de posição idênticos, todas as chaves usadas no código existem. `node tests/rng.js` (uniformidade de `secureInt`, semente reproduzível), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (regressão para um erro encontrado em jogos longos: transbordo do contador Int32 do flood-fill).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 verificações de IU, 0 falhas — teclado, anular, mudança de idioma, exportação/importação SGF, SGF inválido rejeitado, resolução pela IU de todos os 12 problemas, jogo 5×5 completo até à marcação e à pontuação, todas as 12 predefinições jogáveis, estimativa de território, relógio byo-yomi, telemóvel 390 px (sem deslocação horizontal, alvos ≥ 44 px, confirmação da jogada), `localStorage` bloqueado, sem Worker (alternativa), 0 pedidos de rede, 0 erros de consola.
 
@@ -166,7 +166,7 @@ substituir uma partida em curso (a partir do atlas, de um registo SGF ou ao inic
 - Correção de tradução: a referência de fonte do Rengo já não contém texto em romeno.
 
 ### 1.2.1 — 2026-10-19
-- Todos os textos longos («Sobre», 6 lições, 12 nomes de problemas de tsume, textos de nível, nota sobre o komi, as fichas do atlas) estão traduzidos para fr, it, es, pt, de, hu; a nota «texto em inglês» já não aparece. Traduções automáticas, não verificadas por falantes nativos.
+- Todos os textos longos («Sobre», 6 lições, 18 nomes de problemas de tsume, textos de nível, nota sobre o komi, as fichas do atlas) estão traduzidos para fr, it, es, pt, de, hu; a nota «texto em inglês» já não aparece. Traduções automáticas, não verificadas por falantes nativos.
 
 ### 14 de outubro de 2026 — versão 1.1.0
 - Jogo a dois através de FFF.p2p (lockstep), analisador local, desafio do dia, «porque não posso jogar?», jogo com teclado e anúncios de áudio, torneio Elo local; idioma húngaro (parcial); kit FFF (`core,label,bundle,qr,p2p,tts`); testes `tests/fff-r8.test.mjs`. Sem regressões de regras (motor de jogo inalterado).

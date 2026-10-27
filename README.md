@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 2.1.0 · **Last updated:** 2026-10-27
+**Version:** 2.2.0 · **Last updated:** 2026-10-27
 
 **Status:** stable; review 2026-10-27 applied (see CHANGELOG.md); unified local multiplayer is **planned**, not yet implemented · **Offline:** complete (no network requests)
 
@@ -31,7 +31,9 @@ An atlas (18 sheets: origin, rules, approximations ⚠, sources) and an actual g
 - **Hint** (💡, in games with visible stones): the local AI proposes a move for you (Monte-Carlo search, indicative), shown as a move to confirm or cancel.
 - **Autosave:** an unfinished game is saved locally after every move; on the next opening, the "Play" tab offers "Continue game" or "Delete save" (verified by replay; corrupt saves are rejected).
 - **Interactive lessons** (6): stones, liberties, capture, ko, two eyes, seki.
-- **12 tsume-go problems**, each with a solution confirmed by a brute-force solver (see "What the solver guarantees"); correct/wrong feedback with the defender's answer; "Show the solution" step by step.
+- **18 tsume-go problems**, each with a solution confirmed by a brute-force solver (see "What the solver guarantees"); correct/wrong feedback with the defender's answer; "Show the solution" step by step.
+- **6 new tsumego problems** (now 18), all verified with the in-app solver: solution = the winning moves at minimum depth, stable at depth+2, every wrong move refuted (`tests/tsume-verify.test.mjs`, 92 checks). Names are RO/EN; the other languages are machine translations.
+- **AI levels are real (verified by simulation)**: `tests/niveluri-sim.test.mjs` plays 50 AI-vs-AI games per pairing (9×9, komi 7.5, Tromp–Taylor rules, 2 random opening moves, alternating colours): level 2 (100 iterations) beats level 1 (0 iterations) 50–0 (z=7.07); level 3 (500) beats level 1 50–0 (z=7.07); level 3 beats level 2 45–5 (z=5.66). Levels 4 and 5 were not simulated (too slow); the result is for 9×9 only.
 - **SGF:** export (with moves, handicap, komi, result); import and replay with a strict parser (FF[4], main line only, limits: 2 MB, 30,000 nodes, depth 256; nothing is executed); "Continue the game from here".
 - **Interface:** full keyboard (arrows + Enter, P = pass, U = undo), "confirm move" mode (default on touch screens), zoom 1×/1.6×/2.2× on mobile, 390 px with no horizontal scroll; undo only against the AI or with confirmation; no sounds.
 - **Interface and content in 8 languages** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU are machine-translated, not verified by native speakers) with autodetection; the long texts (atlas, 6 interactive lessons, tsume problem names, "About", komi note) are translated into all the languages too. Left as they are: the "sources" field of the atlas sheets (citations, proper names) and the artistic name "Ecoul Stringurilor". Key parity is checked by a script. The Go terminology (e.g. hu "felület" for area scoring) deserves a review by a native player.
@@ -44,7 +46,7 @@ All of them open from the "Game table" button (two-player games, analysis, daily
 
 - **Two-player game via FFF.p2p** (WebRTC, manual signalling through text or QR code, no server). The host is authoritative; the guest applies only the numbered moves returned by the host (lockstep, with a position checksum). Move, pass, resign, marking of dead stones and score confirmation are synchronised; draw/new game are proposed and accepted. Limits: no clock, no AI, no move undo in the online game, no resume after the page is reloaded. The IP address is visible to the opponent; a symmetric NAT may require STUN/TURN (public STUN optional, only with explicit consent in the dialog).
 - **Local analyzer**: win-probability and score estimate with MCTS using a fixed seed (800/500/250 iterations depending on board size), hence the same result for the same position; a "Review" of the current game with a graph and the moves that change the evaluation by ≥ 20 points. It is a statistical estimate, not a professional-level engine.
-- **Daily challenge**: a 9×9 board with stones placed from the calendar date (the same for everyone on the same day), plus the day's tsume problem from the existing 12; streak of consecutive days stored locally. No network.
+- **Daily challenge**: a 9×9 board with stones placed from the calendar date (the same for everyone on the same day), plus the day's tsume problem from the existing 18; streak of consecutive days stored locally. No network.
 - **"Why can't I move?"**: every illegal move gets an explanation (occupied point, ko with the prohibited move, superko with the move number, suicide with the chain size, NoGo, etc.), also announced for screen readers; a dedicated button and the `?` key.
 - **Keyboard and audio announcements**: cursor on the board with the arrows, Enter/Space to play, `W` (status), `C` (coordinates), `L` (last move), `S` (score); aria-live region and, optionally, voice (Web Speech, local) through the kit's `tts` module.
 - **Local Elo tournament**: you + AI opponents (Elo 500 + 200·level), round-robin home and away, standings recalculated from the results; AI-vs-AI games are simulated on 5×5/7×7/9×9 with reduced iterations (Tromp–Taylor); the Elo ranking is relative and indicative.
@@ -111,7 +113,7 @@ Run from `scratchpad/new/games_work/Go-fara-frontiere/` (outside the package):
 - Comparison with an independent reference implementation (brute-force flood-fill): 100,000 random positions in 588 games, 602,976 legality checks, 0 divergences (in `tests/run.js`).
 - `node tests/fuzz.js 9 500` — 500 AI-vs-AI games on 9×9 (52,291 moves), each move validated by the reference: 0 illegal moves, 0 invariants violated. `node tests/fuzz.js 13 100` — 100 games on 13×13 (20,839 moves): 0 illegal. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 illegal.
 - `node tests/vs_random.js 100 100` — MCTS with 100 iterations beats the random player 100–0 on 9×9 (requirement ≥ 95%).
-- `node tests/tsume_verify.js` — re-solves the 12 problems: the stored solution, the minimum depth, stability at D+2, refutation of every wrong move.
+- `node tests/tsume_verify.js` — re-solves the 18 problems: the stored solution, the minimum depth, stability at D+2, refutation of every wrong move.
 - `node tests/i18n-parity.js` — 254 keys × 7 languages, identical placeholders, all keys used in the code exist. `node tests/rng.js` (uniformity of `secureInt`, reproducible seed), `node tests/contrast.js` (≥ 4.5:1), `node tests/stamp_overflow.js` (regression for a bug found in long games: Int32 counter overflow in the flood-fill).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 UI checks, 0 failures — keyboard, undo, language change, SGF export/import, invalid SGF rejected, solving all 12 problems through the UI, a complete 5×5 game through marking and scoring, all 12 playable presets, territory estimate, byo-yomi clock, mobile 390 px (no horizontal scroll, targets ≥ 44 px, move confirmation), blocked `localStorage`, no Worker (fallback), 0 network requests, 0 console errors.
 
@@ -168,7 +170,7 @@ replacing a game in progress (from the atlas, from an SGF record, or when starti
 - Translation fix: the Rengo source reference no longer contains Romanian text.
 
 ### 1.2.1 — 2026-10-19
-- All the long texts (About, 6 lessons, 12 tsume names, level texts, komi note, the atlas sheets) are translated into fr, it, es, pt, de, hu; the "text in English" note no longer appears. Machine translations, not verified by native speakers.
+- All the long texts (About, 6 lessons, 18 tsume names, level texts, komi note, the atlas sheets) are translated into fr, it, es, pt, de, hu; the "text in English" note no longer appears. Machine translations, not verified by native speakers.
 
 ### 14 October 2026 — version 1.1.0
 - Two-player game via FFF.p2p (lockstep), local analyzer, daily challenge, "why can't I move?", keyboard play with audio announcements, local Elo tournament; Hungarian language (partial); FFF kit (`core,label,bundle,qr,p2p,tts`); tests `tests/fff-r8.test.mjs`. No rules regressions (the game engine unchanged).

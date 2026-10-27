@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 2.1.0 · **Utolsó frissítés:** 2026-10-27
+**Verzió:** 2.2.0 · **Utolsó frissítés:** 2026-10-27
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -29,7 +29,7 @@ Egy atlasz (18 adatlap: eredet, szabályok, közelítések ⚠, források) és e
 - **Tipp** (💡, látható köves játszmákban): a helyi MI javasol neked egy lépést (Monte-Carlo-keresés, tájékoztató jellegű), megerősítendő vagy visszavonandó lépésként megjelenítve.
 - **Automatikus mentés:** a befejezetlen játszma minden lépés után helyben mentődik; a következő megnyitáskor a „Játék” fül a „Játszma folytatása” vagy a „Mentés törlése” lehetőséget kínálja (visszajátszással ellenőrizve; a sérült mentések elutasításra kerülnek).
 - **Interaktív leckék** (6): kövek, szabadságok, leütés, ko, két szem, seki.
-- **12 tsumego-feladat**, mindegyikhez nyers erős megoldóval megerősített megoldás tartozik (lásd „Mit garantál a megoldó”); helyes/hibás visszajelzés a védekezés válaszával; „A megoldás mutatása” lépésről lépésre.
+- **18 tsumego-feladat**, mindegyikhez nyers erős megoldóval megerősített megoldás tartozik (lásd „Mit garantál a megoldó”); helyes/hibás visszajelzés a védekezés válaszával; „A megoldás mutatása” lépésről lépésre.
 - **SGF:** export (lépésekkel, előnyadással, komival, eredménnyel); import és visszajátszás szigorú elemzővel (FF[4], csak a főág, korlátok: 2 MB, 30 000 csomópont, 256 mélység; semmi nem hajtódik végre); „A játék folytatása innen”.
 - **Felület:** teljes billentyűzetes vezérlés (nyilak + Enter, P = passz, U = visszavonás), „lépés megerősítése” mód (érintőképernyőn alapértelmezett), 1×/1,6×/2,2×-es nagyítás mobilon, 390 px vízszintes görgetés nélkül; visszavonás csak MI ellen vagy megerősítéssel; hangok nélkül.
 - **Felület és tartalom 8 nyelven** (RO/EN/FR/IT/ES/PT/DE/HU; az FR/IT/ES/PT/DE/HU gépi fordítás, anyanyelvi beszélők nem ellenőrizték) automatikus felismeréssel; a hosszú szövegek (az atlasz, a 6 interaktív lecke, a tsume-feladatok nevei, a „Névjegy”, a komi-megjegyzés) szintén le vannak fordítva minden nyelvre. Változatlanul marad: az atlaszlapok „források” mezője (hivatkozások, tulajdonnevek) és az „Ecoul Stringurilor” művésznév. A kulcsok paritását szkript ellenőrzi. A go-terminológiát (pl. hu „felület” a területpontozásra) érdemes anyanyelvi játékossal átnézetni.
@@ -42,7 +42,7 @@ Mindegyik a „Játékasztal” gombról nyílik meg (kétszemélyes játszmák,
 
 - **Kétszemélyes játék az FFF.p2p-n keresztül** (WebRTC, kézi jelzés szövegen vagy QR-kódon keresztül, szerver nélkül). A házigazda a mérvadó; a vendég csak a házigazda által visszaadott, számozott lépéseket alkalmazza (lockstep, a pozíció ellenőrző összegével). A lépés, a passz, a feladás, a halott kövek jelölése és a pontszám megerősítése szinkronizált; a döntetlent/új játszmát javasolják és elfogadják. Korlátok: nincs óra, nincs MI, nincs lépésvisszavonás az online játszmában, nincs folytatás az oldal újratöltése után. Az IP-cím látható az ellenfél számára; a szimmetrikus NAT STUN/TURN-t igényelhet (nyilvános STUN opcionális, csak a párbeszédablakban adott kifejezett hozzájárulással).
 - **Helyi elemző**: nyerési valószínűség és pontszám becslése rögzített seedű MCTS-sel (800/500/250 iteráció a tábla méretétől függően), tehát ugyanarra a pozícióra ugyanaz az eredmény; az aktuális játszma „Áttekintése” grafikonnal és az értékelést ≥ 20 ponttal megváltoztató lépésekkel. Statisztikai becslés, nem professzionális szintű motor.
-- **A nap kihívása**: 9×9-es tábla a naptári dátumból elhelyezett kövekkel (ugyanazon a napon mindenkinek ugyanaz), valamint a nap tsumego-feladata a meglévő 12-ből; az egymást követő napok sorozata helyben tárolva. Hálózat nélkül.
+- **A nap kihívása**: 9×9-es tábla a naptári dátumból elhelyezett kövekkel (ugyanazon a napon mindenkinek ugyanaz), valamint a nap tsumego-feladata a meglévő 18-ből; az egymást követő napok sorozata helyben tárolva. Hálózat nélkül.
 - **„Miért nem léphetek?”**: minden szabálytalan lépés magyarázatot kap (foglalt pont, ko a tiltott lépéssel, szuperko a lépés számával, öngyilkosság a lánc méretével, NoGo stb.), amelyet képernyőolvasók számára is bemondanak; külön gomb és a `?` billentyű.
 - **Billentyűzet és hangbejelentések**: kurzor a táblán a nyilakkal, Enter/Szóköz a lépéshez, `W` (állás), `C` (koordináták), `L` (utolsó lépés), `S` (pontszám); aria-live régió és opcionálisan hang (Web Speech, helyi) a kit `tts` moduljával.
 - **Helyi Elo-torna**: te + MI-ellenfelek (Elo 500 + 200·szint), oda-vissza vágó, az eredményekből újraszámolt ranglista; az MI-k közötti játszmák 5×5/7×7/9×9 táblán, csökkentett iterációkkal szimulálódnak (Tromp–Taylor); az Elo-ranglista relatív és tájékoztató jellegű.
@@ -109,7 +109,7 @@ A `scratchpad/new/games_work/Go-fara-frontiere/` könyvtárból futtatva (a csom
 - Összevetés egy független referencia-megvalósítással (nyers flood-fill): 100 000 véletlen pozíció 588 játszmában, 602 976 szabályosság-ellenőrzés, 0 eltérés (a `tests/run.js`-ben).
 - `node tests/fuzz.js 9 500` — 500 MI–MI játszma 9×9-en (52 291 lépés), minden lépést a referencia ellenőrzött: 0 szabálytalan lépés, 0 megsértett invariáns. `node tests/fuzz.js 13 100` — 100 játszma 13×13-on (20 839 lépés): 0 szabálytalan. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 szabálytalan.
 - `node tests/vs_random.js 100 100` — a 100 iterációs MCTS 100–0-ra legyőzi a véletlen játékost 9×9-en (követelmény ≥ 95 %).
-- `node tests/tsume_verify.js` — újra megoldja a 12 feladatot: a tárolt megoldás, a minimális mélység, a stabilitás D+2-nél, minden rossz lépés cáfolata.
+- `node tests/tsume_verify.js` — újra megoldja a 18 feladatot: a tárolt megoldás, a minimális mélység, a stabilitás D+2-nél, minden rossz lépés cáfolata.
 - `node tests/i18n-parity.js` — 254 kulcs × 7 nyelv, azonos helyőrzők, a kódban használt összes kulcs létezik. `node tests/rng.js` (a `secureInt` egyenletessége, reprodukálható seed), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (regresszió egy hosszú játszmákban talált hibára: a flood-fill Int32-számlálójának túlcsordulása).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 felületellenőrzés, 0 hiba — billentyűzet, visszavonás, nyelvváltás, SGF-export/-import, érvénytelen SGF elutasítva, mind a 12 feladat megoldása a felületen, teljes 5×5-ös játszma a jelölésig és a pontozásig, mind a 12 játszható előbeállítás, területbecslés, byo-yomi óra, mobil 390 px (vízszintes görgetés nélkül, célpontok ≥ 44 px, lépésmegerősítés), blokkolt `localStorage`, Worker nélkül (tartalék), 0 hálózati kérés, 0 konzolhiba.
 
@@ -166,7 +166,7 @@ egy folyamatban lévő játszma cseréje (az atlaszból, SGF-felvételből vagy 
 - Fordítási javítás: a Rengo forráshivatkozása már nem tartalmaz román szöveget.
 
 ### 1.2.1 — 2026-10-19
-- Az összes hosszú szöveg („Névjegy”, 6 lecke, 12 tsume-név, szintszövegek, komi-megjegyzés, az atlaszlapok) le van fordítva fr, it, es, pt, de, hu nyelvre; a „szöveg angolul” megjegyzés már nem jelenik meg. Gépi fordítások, anyanyelvi beszélők nem ellenőrizték.
+- Az összes hosszú szöveg („Névjegy”, 6 lecke, 18 tsume-név, szintszövegek, komi-megjegyzés, az atlaszlapok) le van fordítva fr, it, es, pt, de, hu nyelvre; a „szöveg angolul” megjegyzés már nem jelenik meg. Gépi fordítások, anyanyelvi beszélők nem ellenőrizték.
 
 ### 2026. október 14. — 1.1.0 verzió
 - Kétszemélyes játék az FFF.p2p-n keresztül (lockstep), helyi elemző, a nap kihívása, „miért nem léphetek?”, billentyűzetes játék hangbejelentésekkel, helyi Elo-torna; magyar nyelv (részleges); FFF kit (`core,label,bundle,qr,p2p,tts`); tesztek `tests/fff-r8.test.mjs`. Szabályregresszió nélkül (a játékmotor változatlan).

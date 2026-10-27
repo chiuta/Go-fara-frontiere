@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 2.1.0 · **Ultima actualizare:** 2026-10-27
+**Versiune:** 2.2.0 · **Ultima actualizare:** 2026-10-27
 
 **Stare:** stabilă; recenzia din 2026-10-27 aplicată (vezi CHANGELOG.md); modul multiplayer local unificat este **planificat**, neimplementat · **Offline:** complet (fără cereri de rețea)
 
@@ -31,7 +31,9 @@ Un atlas (18 fișe: origine, reguli, aproximări ⚠, surse) și un joc efectiv 
 - **Sugestie** (💡, în partidele cu pietre vizibile): AI-ul local propune o mutare pentru tine (căutare Monte-Carlo, orientativă), afișată ca mutare de confirmat sau anulat.
 - **Salvare automată:** o partidă nefinalizată se salvează local după fiecare mutare; la următoarea deschidere, fila „Joacă” oferă „Continuă partida” sau „Șterge salvarea” (verificată prin reluare; salvările corupte sunt respinse).
 - **Lecții interactive** (6): pietre, libertăți, captură, ko, doi ochi, seki.
-- **12 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
+- **18 probleme de tsume-go**, fiecare cu soluție confirmată de un solver de forță brută (vezi „Ce garantează solverul”); feedback corect/greșit cu răspunsul apărării; „Arată soluția” pas cu pas.
+- **6 probleme tsumego noi** (acum 18), toate verificate cu solverul din aplicație: soluția = mutările câștigătoare la adâncimea minimă, stabilă la adâncimea+2, toate mutările greșite refutate (`tests/tsume-verify.test.mjs`, 92 verificări). Numele sunt RO/EN; celelalte limbi sunt traduceri automate.
+- **Nivelurile AI sunt reale (verificat prin simulare)**: `tests/niveluri-sim.test.mjs` joacă 50 de partide AI-vs-AI pe pereche (9×9, komi 7,5, reguli Tromp–Taylor, 2 mutări de deschidere aleatoare, culori alternate): nivel 2 (100 iterații) bate nivel 1 (0 iterații) cu 50–0 (z=7,07); nivel 3 (500) bate nivel 1 cu 50–0 (z=7,07); nivel 3 bate nivel 2 cu 45–5 (z=5,66). Nivelurile 4 și 5 nu au fost simulate (prea lente); rezultatul e doar pe 9×9.
 - **SGF:** export (cu mutări, handicap, komi, rezultat); import și reluare cu parser strict (FF[4], doar linia principală, limite: 2 MB, 30 000 noduri, adâncime 256; nu se execută nimic); „Continuă jocul de aici”.
 - **Interfață:** tastatură completă (săgeți + Enter, P = pas, U = anulează), mod „confirmă mutarea” (implicit pe ecran tactil), zoom 1×/1,6×/2,2× pe mobil, 390 px fără scroll orizontal; anulare doar contra AI sau cu confirmare; fără sunete.
 - **Interfață și conținut în 8 limbi** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sunt traduse automat, neverificate de vorbitori nativi) cu autodetectare; textele lungi (atlasul, cele 6 lecții interactive, numele problemelor tsume, „Despre”, nota despre komi) sunt traduse și ele în toate limbile. Rămân neschimbate: câmpul „surse” al fișelor din atlas (citări, nume proprii) și numele artistic „Ecoul Stringurilor”. Paritatea cheilor este verificată cu un script. Terminologia de Go (de ex. hu „felület” pentru area scoring) merită revizuită de un jucător nativ.
@@ -44,7 +46,7 @@ Toate se deschid din butonul „Masa de joc” (jocuri în doi, analiză, provoc
 
 - **Joc în doi prin FFF.p2p** (WebRTC, semnalizare manuală prin text sau cod QR, fără server). Gazda este autoritară; oaspetele aplică doar mutările numerotate returnate de gazdă (lockstep, cu sumă de control a poziției). Mutare, pas, abandon, marcarea pietrelor moarte și confirmarea scorului sunt sincronizate; remiză/partidă nouă se propun și se acceptă. Limite: fără ceas, fără AI, fără anulare mutare în partida online, fără reluare după reîncărcarea paginii. Adresa IP este vizibilă adversarului; NAT simetric poate necesita STUN/TURN (STUN public opțional, doar cu acordul explicit din dialog).
 - **Analizor local**: estimare de probabilitate de câștig și de scor cu MCTS cu sămânță fixă (800/500/250 de iterații după mărimea tablei), deci același rezultat pentru aceeași poziție; „Recenzie” a partidei curente cu grafic și mutările care schimbă evaluarea cu ≥ 20 de puncte. Este o estimare statistică, nu un motor de nivel profesionist.
-- **Provocarea zilei**: tablă 9×9 cu pietre plasate din data calendaristică (aceeași pentru toți în aceeași zi), plus problema de tsume a zilei din cele 12 existente; serie de zile consecutive stocată local. Fără rețea.
+- **Provocarea zilei**: tablă 9×9 cu pietre plasate din data calendaristică (aceeași pentru toți în aceeași zi), plus problema de tsume a zilei din cele 18 existente; serie de zile consecutive stocată local. Fără rețea.
 - **„De ce nu pot muta?”**: orice mutare ilegală primește o explicație (punct ocupat, ko cu mutarea de interdicție, superko cu numărul mutării, sinucidere cu mărimea lanțului, NoGo etc.), anunțată și pentru cititoare de ecran; buton dedicat și tasta `?`.
 - **Tastatură și anunțuri audio**: cursor pe tablă cu săgeți, Enter/Spațiu pentru a juca, `W` (stare), `C` (coordonate), `L` (ultima mutare), `S` (scor); regiune aria-live și, opțional, voce (Web Speech, local) prin modulul `tts` al kitului.
 - **Turneu Elo local**: dumneavoastră + adversari AI (Elo 500 + 200·nivel), tur-retur, clasament recalculat din rezultate; meciurile între AI se simulează pe 5×5/7×7/9×9 cu iterații reduse (Tromp–Taylor); clasamentul Elo este relativ și orientativ.
@@ -116,7 +118,7 @@ Rulate din `scratchpad/new/games_work/Go-fara-frontiere/` (în afara pachetului)
 - Comparare cu o implementare de referință independentă (flood-fill brut): 100 000 de poziții aleatoare în 588 de partide, 602 976 de verificări de legalitate, 0 divergențe (în `tests/run.js`).
 - `node tests/fuzz.js 9 500` — 500 de partide AI contra AI pe 9×9 (52 291 de mutări), fiecare mutare validată de referință: 0 mutări ilegale, 0 invarianți încălcați. `node tests/fuzz.js 13 100` — 100 de partide pe 13×13 (20 839 de mutări): 0 ilegale. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 ilegale.
 - `node tests/vs_random.js 100 100` — MCTS cu 100 de iterații bate jucătorul aleator 100–0 pe 9×9 (cerință ≥ 95%).
-- `node tests/tsume_verify.js` — re-rezolvă cele 12 probleme: soluția stocată, adâncimea minimă, stabilitatea la D+2, refutarea fiecărei mutări greșite.
+- `node tests/tsume_verify.js` — re-rezolvă cele 18 probleme: soluția stocată, adâncimea minimă, stabilitatea la D+2, refutarea fiecărei mutări greșite.
 - `node tests/i18n-parity.js` — 254 de chei × 7 limbi, placeholdere identice, toate cheile folosite în cod există. `node tests/rng.js` (uniformitate `secureInt`, seed reproductibil), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (regresie pentru o eroare găsită în meciuri lungi: depășirea contorului Int32 din flood-fill).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 de verificări UI, 0 eșecuri — tastatură, undo, schimbarea limbii, export/import SGF, SGF invalid respins, rezolvarea prin UI a tuturor celor 12 probleme, partidă 5×5 completă până la marcare și scor, toate cele 12 presetări jucabile, estimare de teritoriu, ceas byo-yomi, mobil 390 px (fără scroll orizontal, ținte ≥ 44 px, confirmarea mutării), `localStorage` blocat, fără Worker (fallback), 0 cereri de rețea, 0 erori de consolă.
 
@@ -173,7 +175,7 @@ fff-kit 1.1.2: PBKDF2 600 000 iterații, protecție anti-clickjacking.
 - Corecție de traducere: referința sursă de la Rengo nu mai conține text în română.
 
 ### 1.2.1 — 2026-10-19
-- Toate textele lungi („Despre”, 6 lecții, 12 nume de probleme tsume, textele de nivel, nota despre komi, fișele atlasului) sunt traduse în fr, it, es, pt, de, hu; nota „text în engleză” nu mai apare. Traduceri automate, neverificate de vorbitori nativi.
+- Toate textele lungi („Despre”, 6 lecții, 18 nume de probleme tsume, textele de nivel, nota despre komi, fișele atlasului) sunt traduse în fr, it, es, pt, de, hu; nota „text în engleză” nu mai apare. Traduceri automate, neverificate de vorbitori nativi.
 
 ### 14 octombrie 2026 — versiunea 1.1.0
 - Joc în doi prin FFF.p2p (lockstep), analizor local, provocarea zilei, „de ce nu pot muta?”, joc de la tastatură cu anunțuri audio, turneu Elo local; limba maghiară (parțială); kit FFF (`core,label,bundle,qr,p2p,tts`); teste `tests/fff-r8.test.mjs`. Fără regresii de reguli (motorul de joc nemodificat).
