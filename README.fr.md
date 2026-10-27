@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 2.1.0 · **Dernière mise à jour :** 2026-10-27
+**Version :** 2.2.0 · **Dernière mise à jour :** 2026-10-27
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -29,7 +29,7 @@ Un atlas (18 fiches : origine, règles, approximations ⚠, sources) et une vér
 - **Suggestion** (💡, dans les parties à pierres visibles) : l'IA locale propose un coup pour vous (recherche Monte-Carlo, indicative), affiché comme un coup à confirmer ou annuler.
 - **Sauvegarde automatique :** une partie inachevée est enregistrée localement après chaque coup ; à la prochaine ouverture, l'onglet « Jouer » propose « Continuer la partie » ou « Supprimer la sauvegarde » (vérifiée par rejeu ; les sauvegardes corrompues sont rejetées).
 - **Leçons interactives** (6) : pierres, libertés, capture, ko, deux yeux, seki.
-- **12 problèmes de tsumego**, chacun avec une solution confirmée par un solveur en force brute (voir « Ce que garantit le solveur ») ; retour correct/erroné avec la réponse de la défense ; « Montrer la solution » pas à pas.
+- **18 problèmes de tsumego**, chacun avec une solution confirmée par un solveur en force brute (voir « Ce que garantit le solveur ») ; retour correct/erroné avec la réponse de la défense ; « Montrer la solution » pas à pas.
 - **SGF :** export (avec coups, handicap, komi, résultat) ; import et relecture avec un analyseur strict (FF[4], ligne principale uniquement, limites : 2 Mo, 30 000 nœuds, profondeur 256 ; rien n'est exécuté) ; « Continuer la partie d'ici ».
 - **Interface :** clavier complet (flèches + Entrée, P = passer, U = annuler), mode « confirmer le coup » (par défaut sur écran tactile), zoom 1×/1,6×/2,2× sur mobile, 390 px sans défilement horizontal ; annulation seulement contre l'IA ou avec confirmation ; sans sons.
 - **Interface et contenu en 8 langues** (RO/EN/FR/IT/ES/PT/DE/HU ; FR/IT/ES/PT/DE/HU sont traduites automatiquement, non vérifiées par des locuteurs natifs) avec détection automatique ; les textes longs (atlas, 6 leçons interactives, noms des problèmes de tsume, « À propos », note sur le komi) sont aussi traduits dans toutes les langues. Restent tels quels : le champ « sources » des fiches de l'atlas (citations, noms propres) et le nom artistique « Ecoul Stringurilor ». La parité des clés est vérifiée par un script. La terminologie du go (p. ex. hu « felület » pour le décompte par surface) mérite d'être relue par un joueur natif.
@@ -42,7 +42,7 @@ Toutes s'ouvrent depuis le bouton « Table de jeu » (parties à deux, analyse, 
 
 - **Partie à deux via FFF.p2p** (WebRTC, signalisation manuelle par texte ou code QR, sans serveur). L'hôte fait autorité ; l'invité n'applique que les coups numérotés renvoyés par l'hôte (lockstep, avec somme de contrôle de la position). Coup, passe, abandon, marquage des pierres mortes et confirmation du score sont synchronisés ; la nulle/nouvelle partie se proposent et s'acceptent. Limites : pas de pendule, pas d'IA, pas d'annulation de coup dans la partie en ligne, pas de reprise après rechargement de la page. L'adresse IP est visible de l'adversaire ; un NAT symétrique peut nécessiter STUN/TURN (STUN public facultatif, uniquement avec l'accord explicite dans la boîte de dialogue).
 - **Analyseur local** : estimation de la probabilité de victoire et du score par MCTS à graine fixe (800/500/250 itérations selon la taille du goban), donc même résultat pour la même position ; « Revue » de la partie en cours avec graphique et les coups qui changent l'évaluation d'au moins 20 points. C'est une estimation statistique, pas un moteur de niveau professionnel.
-- **Défi du jour** : goban 9×9 avec des pierres placées à partir de la date du calendrier (le même pour tous le même jour), plus le problème de tsumego du jour parmi les 12 existants ; série de jours consécutifs stockée localement. Sans réseau.
+- **Défi du jour** : goban 9×9 avec des pierres placées à partir de la date du calendrier (le même pour tous le même jour), plus le problème de tsumego du jour parmi les 18 existants ; série de jours consécutifs stockée localement. Sans réseau.
 - **« Pourquoi je ne peux pas jouer ? »** : tout coup illégal reçoit une explication (point occupé, ko avec le coup interdit, superko avec le numéro du coup, suicide avec la taille de la chaîne, NoGo, etc.), annoncée aussi pour les lecteurs d'écran ; bouton dédié et touche `?`.
 - **Clavier et annonces audio** : curseur sur le goban avec les flèches, Entrée/Espace pour jouer, `W` (état), `C` (coordonnées), `L` (dernier coup), `S` (score) ; région aria-live et, en option, voix (Web Speech, locale) via le module `tts` du kit.
 - **Tournoi Elo local** : vous + adversaires IA (Elo 500 + 200·niveau), aller-retour, classement recalculé d'après les résultats ; les parties entre IA sont simulées sur 5×5/7×7/9×9 avec des itérations réduites (Tromp–Taylor) ; le classement Elo est relatif et indicatif.
@@ -109,7 +109,7 @@ Exécutés depuis `scratchpad/new/games_work/Go-fara-frontiere/` (hors du paquet
 - Comparaison avec une implémentation de référence indépendante (flood-fill brut) : 100 000 positions aléatoires dans 588 parties, 602 976 vérifications de légalité, 0 divergence (dans `tests/run.js`).
 - `node tests/fuzz.js 9 500` — 500 parties IA contre IA sur 9×9 (52 291 coups), chaque coup validé par la référence : 0 coup illégal, 0 invariant violé. `node tests/fuzz.js 13 100` — 100 parties sur 13×13 (20 839 coups) : 0 illégal. `node tests/fuzz.js var 120` — NoGo / Capture-Go : 0 illégal.
 - `node tests/vs_random.js 100 100` — le MCTS à 100 itérations bat le joueur aléatoire 100–0 sur 9×9 (exigence ≥ 95 %).
-- `node tests/tsume_verify.js` — résout à nouveau les 12 problèmes : solution stockée, profondeur minimale, stabilité à D+2, réfutation de chaque mauvais coup.
+- `node tests/tsume_verify.js` — résout à nouveau les 18 problèmes : solution stockée, profondeur minimale, stabilité à D+2, réfutation de chaque mauvais coup.
 - `node tests/i18n-parity.js` — 254 clés × 7 langues, espaces réservés identiques, toutes les clés utilisées dans le code existent. `node tests/rng.js` (uniformité de `secureInt`, graine reproductible), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (régression pour une erreur trouvée dans les longues parties : dépassement du compteur Int32 du flood-fill).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`) : 84 vérifications d'interface, 0 échec — clavier, annulation, changement de langue, export/import SGF, SGF invalide rejeté, résolution par l'interface des 12 problèmes, partie 5×5 complète jusqu'au marquage et au score, les 12 préréglages jouables, estimation du territoire, pendule byo-yomi, mobile 390 px (sans défilement horizontal, cibles ≥ 44 px, confirmation du coup), `localStorage` bloqué, sans Worker (repli), 0 requête réseau, 0 erreur de console.
 
@@ -166,7 +166,7 @@ le remplacement d’une partie en cours (depuis l’atlas, depuis un enregistrem
 - Correction de traduction : la référence source de Rengo ne contient plus de texte en roumain.
 
 ### 1.2.1 — 2026-10-19
-- Tous les textes longs (« À propos », 6 leçons, 12 noms de problèmes de tsume, textes de niveau, note sur le komi, les fiches de l'atlas) sont traduits en fr, it, es, pt, de, hu ; la note « texte en anglais » n'apparaît plus. Traductions automatiques, non vérifiées par des locuteurs natifs.
+- Tous les textes longs (« À propos », 6 leçons, 18 noms de problèmes de tsume, textes de niveau, note sur le komi, les fiches de l'atlas) sont traduits en fr, it, es, pt, de, hu ; la note « texte en anglais » n'apparaît plus. Traductions automatiques, non vérifiées par des locuteurs natifs.
 
 ### 14 octobre 2026 — version 1.1.0
 - Partie à deux via FFF.p2p (lockstep), analyseur local, défi du jour, « pourquoi je ne peux pas jouer ? », jeu au clavier avec annonces audio, tournoi Elo local ; langue hongroise (partielle) ; kit FFF (`core,label,bundle,qr,p2p,tts`) ; tests `tests/fff-r8.test.mjs`. Sans régression des règles (moteur de jeu inchangé).

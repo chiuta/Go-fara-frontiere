@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 2.1.0 · **Zuletzt aktualisiert:** 2026-10-27
+**Version:** 2.2.0 · **Zuletzt aktualisiert:** 2026-10-27
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -29,7 +29,7 @@ Ein Atlas (18 Datenblätter: Ursprung, Regeln, Näherungen ⚠, Quellen) und ein
 - **Hinweis** (💡, in Partien mit sichtbaren Steinen): Die lokale KI schlägt Ihnen einen Zug vor (Monte-Carlo-Suche, Richtwert), angezeigt als Zug, der zu bestätigen oder zu verwerfen ist.
 - **Automatisches Speichern:** Eine unfertige Partie wird nach jedem Zug lokal gespeichert; beim nächsten Öffnen bietet der Reiter „Spielen“ „Partie fortsetzen“ oder „Speicherstand löschen“ an (durch Wiedergabe geprüft; beschädigte Speicherstände werden abgelehnt).
 - **Interaktive Lektionen** (6): Steine, Freiheiten, Schlagen, Ko, zwei Augen, Seki.
-- **12 Tsumego-Aufgaben**, jede mit einer von einem Brute-Force-Solver bestätigten Lösung (siehe „Was der Solver garantiert“); Rückmeldung richtig/falsch mit der Antwort der Verteidigung; „Lösung zeigen“ Schritt für Schritt.
+- **18 Tsumego-Aufgaben**, jede mit einer von einem Brute-Force-Solver bestätigten Lösung (siehe „Was der Solver garantiert“); Rückmeldung richtig/falsch mit der Antwort der Verteidigung; „Lösung zeigen“ Schritt für Schritt.
 - **SGF:** Export (mit Zügen, Vorgabe, Komi, Ergebnis); Import und Wiedergabe mit strengem Parser (FF[4], nur Hauptvariante, Grenzen: 2 MB, 30.000 Knoten, Tiefe 256; nichts wird ausgeführt); „Spiel ab hier fortsetzen“.
 - **Oberfläche:** vollständige Tastaturbedienung (Pfeile + Eingabe, P = Pass, U = Zurücknehmen), Modus „Zug bestätigen“ (auf Touchscreens Standard), Zoom 1×/1,6×/2,2× auf dem Handy, 390 px ohne horizontales Scrollen; Zurücknehmen nur gegen die KI oder mit Bestätigung; keine Töne.
 - **Oberfläche und Inhalt in 8 Sprachen** (RO/EN/FR/IT/ES/PT/DE/HU; FR/IT/ES/PT/DE/HU sind maschinell übersetzt, nicht von Muttersprachlern geprüft) mit automatischer Erkennung; auch die langen Texte (Atlas, 6 interaktive Lektionen, Namen der Tsume-Aufgaben, „Über“, Komi-Hinweis) sind in alle Sprachen übersetzt. Unverändert bleiben: das Feld „Quellen“ der Atlaskarten (Zitate, Eigennamen) und der Künstlername „Ecoul Stringurilor“. Die Schlüsselparität wird per Skript geprüft. Die Go-Terminologie (z. B. hu „felület“ für Flächenwertung) sollte von einem muttersprachlichen Spieler geprüft werden.
@@ -42,7 +42,7 @@ Alle öffnen sich über die Schaltfläche „Spieltisch“ (Zweispielerpartien, 
 
 - **Zweispielerpartie über FFF.p2p** (WebRTC, manuelle Signalisierung per Text oder QR-Code, ohne Server). Der Host ist maßgeblich; der Gast wendet nur die vom Host zurückgegebenen nummerierten Züge an (Lockstep, mit Positionsprüfsumme). Zug, Pass, Aufgabe, Markierung toter Steine und Bestätigung der Wertung werden synchronisiert; Remis/neue Partie werden vorgeschlagen und angenommen. Grenzen: keine Uhr, keine KI, kein Zurücknehmen von Zügen in der Online-Partie, keine Wiederaufnahme nach dem Neuladen der Seite. Die IP-Adresse ist für den Gegner sichtbar; ein symmetrisches NAT kann STUN/TURN erfordern (öffentliches STUN optional, nur mit ausdrücklicher Zustimmung im Dialog).
 - **Lokaler Analysator**: Schätzung von Gewinnwahrscheinlichkeit und Wertung mit MCTS mit festem Seed (800/500/250 Iterationen je nach Brettgröße), daher dasselbe Ergebnis für dieselbe Stellung; „Auswertung“ der aktuellen Partie mit Diagramm und den Zügen, die die Bewertung um ≥ 20 Punkte verändern. Es ist eine statistische Schätzung, keine Engine auf Profi-Niveau.
-- **Tagesaufgabe**: 9×9-Brett mit aus dem Kalenderdatum gesetzten Steinen (am selben Tag für alle gleich), plus die Tsumego-Aufgabe des Tages aus den 12 vorhandenen; Serie aufeinanderfolgender Tage lokal gespeichert. Ohne Netzwerk.
+- **Tagesaufgabe**: 9×9-Brett mit aus dem Kalenderdatum gesetzten Steinen (am selben Tag für alle gleich), plus die Tsumego-Aufgabe des Tages aus den 18 vorhandenen; Serie aufeinanderfolgender Tage lokal gespeichert. Ohne Netzwerk.
 - **„Warum kann ich nicht ziehen?“**: Jeder regelwidrige Zug erhält eine Erklärung (besetzter Punkt, Ko mit dem verbotenen Zug, Superko mit der Zugnummer, Selbstmord mit der Kettengröße, NoGo usw.), auch für Screenreader angesagt; eigene Schaltfläche und Taste `?`.
 - **Tastatur und Audioansagen**: Cursor auf dem Brett mit den Pfeilen, Eingabe/Leertaste zum Spielen, `W` (Stand), `C` (Koordinaten), `L` (letzter Zug), `S` (Wertung); aria-live-Region und optional Sprache (Web Speech, lokal) über das `tts`-Modul des Kits.
 - **Lokales Elo-Turnier**: Sie + KI-Gegner (Elo 500 + 200·Stufe), Hin- und Rückrunde, aus den Ergebnissen neu berechnete Rangliste; Partien zwischen KIs werden auf 5×5/7×7/9×9 mit reduzierten Iterationen simuliert (Tromp–Taylor); die Elo-Rangliste ist relativ und ein Richtwert.
@@ -109,7 +109,7 @@ Ausgeführt aus `scratchpad/new/games_work/Go-fara-frontiere/` (außerhalb des P
 - Vergleich mit einer unabhängigen Referenzimplementierung (Brute-Force-Flood-Fill): 100.000 Zufallsstellungen in 588 Partien, 602.976 Legalitätsprüfungen, 0 Abweichungen (in `tests/run.js`).
 - `node tests/fuzz.js 9 500` — 500 KI-gegen-KI-Partien auf 9×9 (52.291 Züge), jeder Zug von der Referenz validiert: 0 regelwidrige Züge, 0 verletzte Invarianten. `node tests/fuzz.js 13 100` — 100 Partien auf 13×13 (20.839 Züge): 0 regelwidrig. `node tests/fuzz.js var 120` — NoGo / Capture-Go: 0 regelwidrig.
 - `node tests/vs_random.js 100 100` — MCTS mit 100 Iterationen schlägt den Zufallsspieler 100–0 auf 9×9 (Anforderung ≥ 95 %).
-- `node tests/tsume_verify.js` — löst die 12 Aufgaben erneut: die gespeicherte Lösung, die minimale Tiefe, die Stabilität bei D+2, die Widerlegung jedes falschen Zuges.
+- `node tests/tsume_verify.js` — löst die 18 Aufgaben erneut: die gespeicherte Lösung, die minimale Tiefe, die Stabilität bei D+2, die Widerlegung jedes falschen Zuges.
 - `node tests/i18n-parity.js` — 254 Schlüssel × 7 Sprachen, identische Platzhalter, alle im Code verwendeten Schlüssel existieren. `node tests/rng.js` (Gleichverteilung von `secureInt`, reproduzierbarer Seed), `node tests/contrast.js` (≥ 4,5:1), `node tests/stamp_overflow.js` (Regression für einen in langen Partien gefundenen Fehler: Überlauf des Int32-Zählers im Flood-Fill).
 - Playwright (`pw/ui.js`, `pw/ui2.js`, `pw/ui3.js`): 84 UI-Prüfungen, 0 Fehlschläge — Tastatur, Zurücknehmen, Sprachwechsel, SGF-Export/-Import, ungültiges SGF abgelehnt, Lösen aller 12 Aufgaben über die UI, vollständige 5×5-Partie bis zur Markierung und Wertung, alle 12 spielbaren Voreinstellungen, Gebietsschätzung, Byo-yomi-Uhr, Handy 390 px (kein horizontales Scrollen, Ziele ≥ 44 px, Zugbestätigung), gesperrter `localStorage`, ohne Worker (Fallback), 0 Netzwerkanfragen, 0 Konsolenfehler.
 
@@ -166,7 +166,7 @@ das Ersetzen einer laufenden Partie (aus dem Atlas, aus einer SGF-Aufzeichnung o
 - Übersetzungskorrektur: Die Quellenangabe zu Rengo enthält keinen rumänischen Text mehr.
 
 ### 1.2.1 — 2026-10-19
-- Alle langen Texte („Über“, 6 Lektionen, 12 Tsume-Namen, Stufentexte, Komi-Hinweis, die Atlaskarten) sind nach fr, it, es, pt, de, hu übersetzt; der Hinweis „Text auf Englisch“ erscheint nicht mehr. Maschinelle Übersetzungen, nicht von Muttersprachlern geprüft.
+- Alle langen Texte („Über“, 6 Lektionen, 18 Tsume-Namen, Stufentexte, Komi-Hinweis, die Atlaskarten) sind nach fr, it, es, pt, de, hu übersetzt; der Hinweis „Text auf Englisch“ erscheint nicht mehr. Maschinelle Übersetzungen, nicht von Muttersprachlern geprüft.
 
 ### 14. Oktober 2026 — Version 1.1.0
 - Zweispielerpartie über FFF.p2p (Lockstep), lokaler Analysator, Tagesaufgabe, „Warum kann ich nicht ziehen?“, Tastaturspiel mit Audioansagen, lokales Elo-Turnier; ungarische Sprache (teilweise); FFF-Kit (`core,label,bundle,qr,p2p,tts`); Tests `tests/fff-r8.test.mjs`. Keine Regelregressionen (Spiel-Engine unverändert).
