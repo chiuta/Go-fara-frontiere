@@ -17,8 +17,8 @@
     "go-fara-frontiere.prefs.v1",
     "go-fara-frontiere.save.v1"
   ],
-  "sizeBytes": 924588,
-  "sha256": "ff6e0ee93b5ee8ae9a9f3a0dd3a8d56a2f88e54bcac76b283ae28e10fef01091",
+  "sizeBytes": 955909,
+  "sha256": "4c9c6d66999af149cdbdf07b1f2f082eccaf147802a3779df1ee0c66b937de7f",
   "csp": {
     "present": true,
     "directives": {
@@ -59,6 +59,8 @@
       "bundle",
       "qr",
       "p2p",
+      "sync",
+      "history",
       "tts"
     ]
   },
@@ -72,6 +74,8 @@
       "bundle",
       "qr",
       "p2p",
+      "sync",
+      "history",
       "tts"
     ]
   },
