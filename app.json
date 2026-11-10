@@ -2,8 +2,8 @@
   "schema": 1,
   "slug": "go-fara-frontiere",
   "name": "Go fără frontiere",
-  "version": "2.2.3",
-  "updated": "2026-11-08",
+  "version": "2.2.4",
+  "updated": "2026-11-10",
   "description": "Go (Baduk, Weiqi, Igo) offline: 9×9, 13×13, 19×19, reguli japoneze/chineze/AGA/Tromp–Taylor, AI MCTS, Atari-Go, NoGo, Rengo, Phantom Go, byo-yomi, probleme tsume verificate și SGF.",
   "egress": [],
   "permissions": [
@@ -19,8 +19,8 @@
     "go-fara-frontiere.prefs.v1",
     "go-fara-frontiere.save.v1"
   ],
-  "sizeBytes": 1034971,
-  "sha256": "c1146b27d3f463ce39a9c043fe363ee6d6703a323f2bd92651bc05d3495ac4ac",
+  "sizeBytes": 1056103,
+  "sha256": "26cf9cb36f7afe8bc68a4666b07ba6de0727e1ef6de31bbdf1052a56953d0892",
   "csp": {
     "present": true,
     "directives": {
@@ -58,6 +58,7 @@
       "store",
       "dialog",
       "exit",
+      "view",
       "label",
       "bundle",
       "qr",
@@ -68,12 +69,13 @@
     ]
   },
   "kit": {
-    "version": "1.3.0",
+    "version": "1.4.0",
     "modules": [
       "core",
       "store",
       "dialog",
       "exit",
+      "view",
       "label",
       "bundle",
       "qr",
