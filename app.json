@@ -12,6 +12,7 @@
     "serviceWorker",
     "localStorage",
     "Web Crypto",
+    "WebGL",
     "Worker",
     "BroadcastChannel"
   ],
@@ -19,13 +20,13 @@
     "go-fara-frontiere.prefs.v1",
     "go-fara-frontiere.save.v1"
   ],
-  "sizeBytes": 1073790,
-  "sha256": "6ff5ee5956a1033124aedaa13ee898744f53a45b6e7de019921f323fb719710b",
+  "sizeBytes": 1125428,
+  "sha256": "f80a189c24c1fcf54dedd01844f856d0c0ac48823276ccde71e88bf75483001c",
   "csp": {
     "present": true,
     "directives": {
       "default-src": "'none'",
-      "script-src": "sha256×5",
+      "script-src": "sha256×6",
       "worker-src": "'self' blob:",
       "style-src": "'unsafe-inline'",
       "img-src": "'self' data:",
