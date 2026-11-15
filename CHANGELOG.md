@@ -1,5 +1,9 @@
 # Jurnal de modificări
 
+## 2.2.8 — 2026-11-15
+
+- Nou: texturi fractale hiper-detaliate (fff-texturi 1.1.2) — fundalul și suprafețele mari (carduri, panouri, antete, butoane; filele și dialogurile ascunse la încărcare, când se deschid) primesc un material generat local (WebGL2, fără rețea și fără imagini), care se repetă fără cusătură; culorile aplicației rămân ale ei. Se oprește din dialogul „Transparență” sau cu `?notex=1`.
+
 ## 2.2.1 — 2026-11-03
 
 Stratul comun de jocuri (TBL) vine acum dintr-o singură sursă din hub, nu mai e lipit de mână
